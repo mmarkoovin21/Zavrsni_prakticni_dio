@@ -3,6 +3,17 @@ body {
   font-family: Arial, sans-serif;
 }
 
+.header {
+  background-color: #2196F3;
+  color: white;
+  text-align: center;
+  padding: 20px;
+}
+
+.header h2 {
+  margin: 0;
+}
+
 .footer{
     background-color: #2196F3;
     color: white;
