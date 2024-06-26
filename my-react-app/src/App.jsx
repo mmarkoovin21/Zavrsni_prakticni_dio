@@ -1,12 +1,11 @@
 import './App.css'
 import Footer from './Components/footer'
-import Header from './Components/header'
+import Login from './Components/login'
 
 function App() {
   return (
     <div className="App">
-      <Header />
-      <h1>ovo radi?</h1>
+      <Login />
       <Footer />
       </div>
   )
