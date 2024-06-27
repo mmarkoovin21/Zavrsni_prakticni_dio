@@ -4,6 +4,7 @@ body {
 }
 
 .header {
+  display: flex;
   background-color: #2196F3;
   color: white;
   text-align: center;
