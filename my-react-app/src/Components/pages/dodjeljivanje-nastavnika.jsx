@@ -5,3 +5,5 @@ function DodjeljivanjeNastavnika() {
         </div>
     );
 }
+
+export default DodjeljivanjeNastavnika;

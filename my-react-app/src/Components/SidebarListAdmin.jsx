@@ -9,10 +9,10 @@ import { Link } from 'react-router-dom';
 
 function SidebarListAdmin() {
   const items = [
-    { name: 'Početna', path: '/home' },
-    { name: 'Akademska Godina', path: '/academic-year' },
-    { name: 'Katalozi', path: '/catalogs' },
-    { name: 'Dnevnik aktivnosti', path: '/activity-log' },
+    { name: 'Početna', path: '/pocetna-admin' },
+    { name: 'Akademska Godina', path: '/ak-godina' },
+    { name: 'Katalozi', path: '/pocetna-admin' },
+    { name: 'Dnevnik aktivnosti', path: '/pocetna-admin' },
   ];
 
   return (

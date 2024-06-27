@@ -5,3 +5,5 @@ function AkGodina() {
     </div>
   );
 }
+
+export default AkGodina;

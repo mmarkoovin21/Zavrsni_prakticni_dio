@@ -5,3 +5,5 @@ function Izvodjenjepredmeta() {
     </div>
   );
 }
+
+export default Izvodjenjepredmeta;
