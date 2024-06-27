@@ -9,7 +9,7 @@ function Header({ toggleDrawer }) {
   return (
     <header className="header">
       <IconButton onClick={toggleDrawer}>
-        <MenuIcon sx={{ fontSize: 45 }} />
+        <MenuIcon sx={{ fontSize: 32, color: 'white' }} />
       </IconButton>
       <Typography variant="h4" sx={{ width: '99%' }}>
         Course Manager
