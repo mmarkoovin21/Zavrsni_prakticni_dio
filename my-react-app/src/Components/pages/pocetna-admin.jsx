@@ -1,6 +1,6 @@
-import Header from "./header";
+import Header from "../header";
 import React, { useState } from "react";
-import PersistentSidebar from "./PersistentSidebar";
+import PersistentSidebar from "../PersistentSidebar";
 
 function PocetnaAdmin() {
   const [open, setOpen] = useState(false);

@@ -13,7 +13,7 @@ function Login () {
 
     const handleLogin = () => {
         if (username === 'mmarkovin21' && password === 'password123') {	
-            navigate('/pocetna');
+            navigate('/pocetna-admin');
         } else {
             alert('Pogrešno korisničko ime ili lozinka');
         }
@@ -42,7 +42,6 @@ function Login () {
             onChange={(e) => setPassword(e.target.value)}/>
 
             <Button type='submit' variant="contained" size="large">Prijavi se</Button>
-            <Link to="/pocetna">početna</Link>
         </Paper>
       </form>
     </div>
