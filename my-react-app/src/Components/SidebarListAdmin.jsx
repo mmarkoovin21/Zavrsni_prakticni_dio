@@ -7,6 +7,7 @@ import ArrowForwardIos from '@mui/icons-material/ArrowForwardIos';
 import Collapse from '@mui/material/Collapse';
 import { Link } from 'react-router-dom';
 import { Divider } from '@mui/material';
+import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 
 function SidebarListAdmin() {
   const [open, setOpen] = useState(false);
@@ -19,25 +20,27 @@ function SidebarListAdmin() {
 
   const items = [
     { name: 'Početna', path: '/pocetna-admin' },
-    { name: 'Akademska Godina', path: '/ak-godina' },
+    { name: 'Akademska Godina', path: '/pocetna-admin' },
     { name: 'Dnevnik aktivnosti', path: '/pocetna-admin' },
   ];
 
   const dropdownItems = [
-    { name: 'Akademske godine', path: '/akademske-godine' },
-    { name: 'Predmeti', path: '/predmeti' },
-    { name: 'Nastavnici', path: '/nastavnici' },
+    { name: 'Akademske godine', path: '/ak-godina' },
+    { name: 'Nastavnici', path: '/dodjeljivanje-nastavnika' },
+    { name: 'Predmeti', path: '/izvodjenje-redmeta' },
   ];
 
   return (
     <List>
       {items.filter(item => item.name !== 'Dnevnik aktivnosti').map((item) => (
-        <ListItem key={item.name} component={Link} to={item.path}>
+        <ListItem key={item.name} component={Link} to={item.path} sx={{ color: 'black' }}>
           <ListItemText primary={item.name} />
+          <ListItemIcon>
+          <ArrowForwardIos />
+          </ListItemIcon>
         </ListItem>
       ))}
-      {/* Katalozi and its dropdown */}
-      <ListItem button onClick={handleClick}>
+      <ListItem onClick={handleClick}>
         <ListItemText primary="Katalozi" />
         <ListItemIcon style={{ transform: rotate ? 'rotate(90deg)' : 'none' }}>
           <ArrowForwardIos />
@@ -46,17 +49,22 @@ function SidebarListAdmin() {
       <Collapse in={open} timeout="auto" unmountOnExit>
         <List component="div" disablePadding>
           {dropdownItems.map((dropdownItem) => (
-            <ListItem key={dropdownItem.name} component={Link} to={dropdownItem.path} sx={{ pl: 4 }}>
+            <ListItem key={dropdownItem.name} component={Link} to={dropdownItem.path} sx={{ pl: 4, color: 'black' }}>
               <ListItemText primary={dropdownItem.name} />
+              <ListItemIcon>
+                {dropdownItem.icon} 
+              </ListItemIcon>
             </ListItem>
           ))}
         </List>
       </Collapse>
       <Divider />
-      {/* Dnevnik aktivnosti */}
       {items.filter(item => item.name === 'Dnevnik aktivnosti').map((item) => (
-        <ListItem key={item.name} component={Link} to={item.path}>
+        <ListItem key={item.name} component={Link} to={item.path} sx={{color: 'black' }}>
           <ListItemText primary={item.name} />
+          <ListItemIcon>
+            <ArrowForwardIos />
+          </ListItemIcon>
         </ListItem>
       ))}
     </List>
