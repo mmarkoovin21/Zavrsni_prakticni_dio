@@ -5,7 +5,7 @@ import { Typography } from "@mui/material";
 import { Link } from "react-router-dom";
 import { ArrowForwardIos } from "@mui/icons-material";
 import Statistics from "../Statistics";
-
+import RecentCard from "../RecentCard";
 
 function PocetnaAdmin() {
   const [open, setOpen] = useState(false);
@@ -28,6 +28,15 @@ function PocetnaAdmin() {
           Statistika
         </Typography>
         <Statistics />
+        <Typography variant="h3" sx={{marginBottom: '20px'}}>
+          Nedavno
+        </Typography>
+        <div className="recentContainer">
+          <RecentCard title='Upis novog kolegija' text='Primjena informatike u biološkim znanostima'/>
+          <RecentCard title='Nastavnici' text='Uređivanje nastavnika'/>
+          <RecentCard title='Predmeti' text='Uređivanje predmeta'/>
+          <RecentCard title='Predmeti' text='Uređivanje predmeta'/>
+        </div>
       </main>
     </div>
   );
