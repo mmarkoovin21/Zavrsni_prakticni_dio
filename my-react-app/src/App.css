@@ -17,6 +17,7 @@ main {
   text-align: center;
   padding: 20px;
   position: fixed;
+  z-index: 10;
   top: 0;
 }
 
@@ -148,3 +149,5 @@ main {
   gap: 24px;
   justify-content: flex-end;
 }
+
+  

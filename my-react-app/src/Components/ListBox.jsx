@@ -1,7 +1,7 @@
 import Box from '@mui/material/Box';
 import ProfessorSelectCard from './ProfessorSelectCard';
 
-function ProfesorsList() {
+function ListBox({children}) {
 
   return (
     <div className="profesorsList">
@@ -12,12 +12,13 @@ function ProfesorsList() {
           padding: 1,
           borderRadius: 0.8,
           bgcolor: 'grey.400',
+          overflow: 'auto'
         }}
         >
-            <ProfessorSelectCard professor="Ivan Ivanović" mail="nesto@mail.com"/>
+          {children}
         </Box>
     </div>
   );
 }
 
-export default ProfesorsList;
+export default ListBox;

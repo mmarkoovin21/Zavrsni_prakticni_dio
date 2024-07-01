@@ -5,7 +5,8 @@ import BasicSelect from '../BasicSelect';
 import TextField from '@mui/material/TextField';
 import IconButton from '@mui/material/IconButton';
 import SearchIcon from '@mui/icons-material/Search';
-import ProfesorsList from '../ProfesorsList';
+import ListBox from '../ListBox';
+import ProfessorSelectCard from '../ProfessorSelectCard';
 
 let dropdownYear = {
     2020: '2020',
@@ -57,13 +58,23 @@ function DodjeljivanjeNastavnika() {
                     <Typography variant="h6" sx={{marginBottom: '15px'}}>
                         Lista nastavnika koji NE predaju na predmetu:
                     </Typography>
-                    <ProfesorsList />
+                    <ListBox>
+                        <ProfessorSelectCard professor="Ivan Ivanović" mail="prof.prof@foi.hr" />
+                    </ListBox>
                 </div>
                 <div>
                     <Typography variant="h6" sx={{marginBottom: '15px'}}>
                         Lista nastavnika koji predaju na predmetu:
                     </Typography>
-                    <ProfesorsList />
+                    <ListBox>
+                        <ProfessorSelectCard professor="Ivan Ivanović" mail="prof.prof@foi.hr" />
+                        <ProfessorSelectCard professor="Ivan Ivanović" mail="prof.prof@foi.hr" />
+                        <ProfessorSelectCard professor="Ivan Ivanović" mail="prof.prof@foi.hr" />
+                        <ProfessorSelectCard professor="Ivan Ivanović" mail="prof.prof@foi.hr" />
+                        <ProfessorSelectCard professor="Ivan Ivanović" mail="prof.prof@foi.hr" />
+                        <ProfessorSelectCard professor="Ivan Ivanović" mail="prof.prof@foi.hr" />
+                        <ProfessorSelectCard professor="Ivan Ivanović" mail="prof.prof@foi.hr" />
+                    </ListBox>
                 </div>
             </div>
             <div className='bottomButtons'>

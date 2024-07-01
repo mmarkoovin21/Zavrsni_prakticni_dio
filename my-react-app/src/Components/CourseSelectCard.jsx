@@ -2,7 +2,7 @@ import React from 'react';
 import Checkbox from '@mui/material/Checkbox';
 import { Paper, Typography } from '@mui/material';
 
-function ProfessorSelectCard({ professor, mail }) {
+function CourseSelectCard({ name, code, semester, major }) {
     const [isChecked, setIsChecked] = React.useState(false);
 
     const handleToggle = () => {
@@ -13,11 +13,19 @@ function ProfessorSelectCard({ professor, mail }) {
             <Paper sx={{border: '2px solid black', display: 'flex'}}>
                 <div className='cardContainer'>
                     <Typography variant='h5' sx={{mb: '10px'}}>
-                        {professor}
+                        {name}
                     </Typography>
-                    <Typography variant='h6 '>
-                        {mail}
-                    </Typography>
+                    <div style={{ display: 'flex', alignItems: 'left', justifyContent: 'space-between', flexDirection: 'column', lineHeight: '40px'}}>
+                        <Typography variant='h6 '>
+                            {code}
+                        </Typography>
+                        <Typography variant='h6 '>
+                            {major}
+                        </Typography>
+                        <Typography variant='h6 '>
+                            {semester}
+                        </Typography>
+                    </div>
                 </div>
                 <div>
                     <Checkbox 
@@ -31,4 +39,4 @@ function ProfessorSelectCard({ professor, mail }) {
     );
 }
 
-export default ProfessorSelectCard;
+export default CourseSelectCard;
