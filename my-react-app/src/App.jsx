@@ -10,6 +10,14 @@ import DodjeljivanjeNastavnika from './Components/pages/dodjeljivanje-nastavnika
 import Izvodjenjepredmeta from './Components/pages/izvodenje-predmeta';
 import AkGodina from './Components/pages/ak-godina';
 
+function HeaderWrapper({ toggleDrawer }) {
+  const location = useLocation();
+  if (location.pathname !== "/") {
+    return <Header toggleDrawer={toggleDrawer} />;
+  }
+  return null;
+}
+
 function App() {
   const [open, setOpen] = useState(false);
 
