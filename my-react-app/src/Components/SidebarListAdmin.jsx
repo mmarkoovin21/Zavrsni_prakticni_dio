@@ -7,9 +7,8 @@ import ArrowForwardIos from '@mui/icons-material/ArrowForwardIos';
 import Collapse from '@mui/material/Collapse';
 import { Link } from 'react-router-dom';
 import { Divider } from '@mui/material';
-import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 
-function SidebarListAdmin() {
+function SidebarListAdmin({ toggleDrawer }) { // Accept toggleDrawer as a prop
   const [open, setOpen] = useState(false);
   const [rotate, setRotate] = useState(false);
 
@@ -33,14 +32,20 @@ function SidebarListAdmin() {
   return (
     <List>
       {items.filter(item => item.name !== 'Dnevnik aktivnosti').map((item) => (
-        <ListItem key={item.name} component={Link} to={item.path} sx={{ color: 'black' }}>
+        <ListItem 
+         key={item.name} 
+         component={Link} 
+         to={item.path} // Corrected prop from 'o' to 'to'
+         sx={{ color: 'black' }}
+         onClick={toggleDrawer} // Use the passed toggleDrawer function
+        >
           <ListItemText primary={item.name} />
           <ListItemIcon>
-          <ArrowForwardIos />
+            <ArrowForwardIos />
           </ListItemIcon>
         </ListItem>
       ))}
-      <ListItem onClick={handleClick}>
+      <ListItem onClick={() => { handleClick(); }}>
         <ListItemText primary="Katalozi" />
         <ListItemIcon style={{ transform: rotate ? 'rotate(90deg)' : 'none' }}>
           <ArrowForwardIos />
@@ -49,7 +54,13 @@ function SidebarListAdmin() {
       <Collapse in={open} timeout="auto" unmountOnExit>
         <List component="div" disablePadding>
           {dropdownItems.map((dropdownItem) => (
-            <ListItem key={dropdownItem.name} component={Link} to={dropdownItem.path} sx={{ pl: 4, color: 'black' }}>
+            <ListItem 
+              key={dropdownItem.name} 
+              component={Link} 
+              to={dropdownItem.path} 
+              sx={{ pl: 4, color: 'black' }} 
+              onClick={toggleDrawer}
+            >
               <ListItemText primary={dropdownItem.name} />
               <ListItemIcon>
                 {dropdownItem.icon} 
@@ -60,13 +71,19 @@ function SidebarListAdmin() {
       </Collapse>
       <Divider />
       {items.filter(item => item.name === 'Dnevnik aktivnosti').map((item) => (
-        <ListItem key={item.name} component={Link} to={item.path} sx={{color: 'black' }}>
-          <ListItemText primary={item.name} />
-          <ListItemIcon>
-            <ArrowForwardIos />
-          </ListItemIcon>
-        </ListItem>
-      ))}
+        <ListItem 
+            key={item.name} 
+            component={Link} 
+            to={item.path} 
+            sx={{color: 'black' }} 
+            onClick={toggleDrawer}
+          >
+              <ListItemText primary={item.name} />
+              <ListItemIcon>
+                <ArrowForwardIos />
+              </ListItemIcon>
+            </ListItem>
+          ))}
     </List>
   );
 }

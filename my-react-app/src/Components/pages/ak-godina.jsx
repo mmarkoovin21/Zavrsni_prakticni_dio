@@ -5,7 +5,7 @@ import BasicSelect from '../BasicSelect';
 import TextField from '@mui/material/TextField';
 import IconButton from '@mui/material/IconButton';
 import SearchIcon from '@mui/icons-material/Search';
-import CourseCardAkYear from '../CourseCard';
+import CourseCardAkYear from '../CourseCardAkYear';
 
 let dropdownOptions = {
   2020: '2020',

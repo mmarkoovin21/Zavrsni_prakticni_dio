@@ -21,7 +21,7 @@ const PersistentSidebar = ({ open, handleDrawerClose }) => {
             <CloseIcon />
           </IconButton>
         </div>
-        <SidebarListAdmin />
+        <SidebarListAdmin toggleDrawer={handleDrawerClose}/>
       </Drawer>
     </div>
   );
