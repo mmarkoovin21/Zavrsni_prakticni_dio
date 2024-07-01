@@ -25,7 +25,7 @@ function SidebarListAdmin() {
   ];
 
   const dropdownItems = [
-    { name: 'Akademske godine', path: '/ak-godina' },
+    { name: 'Akademske godine', path: '/ak-godine' },
     { name: 'Nastavnici', path: '/dodjeljivanje-nastavnika' },
     { name: 'Predmeti', path: '/izvodjenje-redmeta' },
   ];

@@ -4,7 +4,7 @@ import Header from './Components/header.jsx';
 import Footer from './Components/footer';
 import PersistentSidebar from "./Components/PersistentSidebar.jsx";
 import Login from './Components/pages/login';
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { BrowserRouter, Route, Routes, useLocation } from 'react-router-dom';
 import PocetnaAdmin from './Components/pages/pocetna-admin';
 import DodjeljivanjeNastavnika from './Components/pages/dodjeljivanje-nastavnika';
 import Izvodjenjepredmeta from './Components/pages/izvodenje-predmeta';
@@ -24,15 +24,16 @@ function App() {
   const toggleDrawer = () => {
     setOpen(prevOpen => !prevOpen);
   };
+
   return (
     <BrowserRouter>
       <div className="App">
-      <Header toggleDrawer={toggleDrawer} />
+      <HeaderWrapper toggleDrawer={toggleDrawer} />
       <PersistentSidebar open={open} handleDrawerClose={toggleDrawer} />
         <Routes>
           <Route path="/" element={<Login />} />
           <Route path="/pocetna-admin" element={<PocetnaAdmin />} />
-          <Route path="/ak-godina" element={<AkGodina />} />
+          <Route path="/ak-godine" element={<AkGodina />} />
           <Route path="/dodjeljivanje-nastavnika" element={<DodjeljivanjeNastavnika />} />
           <Route path="/izvodjenje-redmeta" element={<Izvodjenjepredmeta />} />
         </Routes>
