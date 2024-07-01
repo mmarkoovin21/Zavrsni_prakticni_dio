@@ -11,9 +11,21 @@ function Login () {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
 
+    let admin = {
+        username: 'mmarkovin21',
+        password: 'password123'
+    }
+
+    let profesor = {
+        username: 'profesor1',
+        password: 'password123'
+    }
+
     const handleLogin = () => {
-        if (username === 'mmarkovin21' && password === 'password123') {	
+        if (username === admin.username && password === admin.password) {	
             navigate('/pocetna-admin');
+        } else if (username === profesor.username && password === profesor.password) {
+            navigate('/pocetna-profesor');
         } else {
             alert('Pogrešno korisničko ime ili lozinka');
         }
