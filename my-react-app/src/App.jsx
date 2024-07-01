@@ -9,6 +9,10 @@ import PocetnaAdmin from './Components/pages/pocetna-admin';
 import DodjeljivanjeNastavnika from './Components/pages/dodjeljivanje-nastavnika';
 import Izvodjenjepredmeta from './Components/pages/izvodenje-predmeta';
 import AkGodina from './Components/pages/ak-godina';
+import PocetnaProfesor from './Components/pages/pocetna-profesor';
+import DetaljiStudenta from './Components/pages/detalji-studenta';
+import PregledRezultataStudenta from './Components/pages/pregled-rezultata-studenta';
+import UnosRezultataStudenta from './Components/pages/unos-rezultata-studenta';
 
 function HeaderWrapper({ toggleDrawer }) {
   const location = useLocation();
@@ -34,6 +38,10 @@ function App() {
           <Route path="/ak-godine" element={<AkGodina />} />
           <Route path="/dodjeljivanje-nastavnika" element={<DodjeljivanjeNastavnika />} />
           <Route path="/izvodjenje-redmeta" element={<Izvodjenjepredmeta />} />
+          <Route path="/pocetna-profesor" element={<PocetnaProfesor />} />
+          <Route path="/detalji-studenta" element={<DetaljiStudenta />} />
+          <Route path="/pregled-rezultata-studenta" element={<PregledRezultataStudenta />} />
+          <Route path="/unos-rezultata-studenta" element={<UnosRezultataStudenta />} />
         </Routes>
         <HeaderWrapper toggleDrawer={toggleDrawer} />
         <PersistentSidebar open={open} handleDrawerClose={toggleDrawer} />
