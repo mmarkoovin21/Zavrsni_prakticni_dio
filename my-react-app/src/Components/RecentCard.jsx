@@ -5,7 +5,7 @@ function RecetCard({title, text}){
     return (
         <div style={{width: '99%'}}>
             <Paper sx={{border: '2px solid black'}}>
-                <div className='recentText'>
+                <div className='cardContainer'>
                     <Typography variant='h5' sx={{mb: '10px'}}>
                         {title}
                     </Typography>

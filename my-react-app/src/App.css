@@ -105,14 +105,26 @@ main {
   margin-right: 20px;
 }
 
-.recentText{
+.cardContainer{
   padding: 20px;
+  margin: 0.5rem 0.8rem;
   text-align: left;
-  width: 99%;
 }
 
 /* AK. GODINE */
 .searchFilter{
+  height: 3rem;
   display: flex;
+  gap: 20px;
+}
+
+.coursesList{
+  margin: 2rem 0;
+}
+
+.courseDetailsAkYear{
+  width: 80%;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
   gap: 20px;
 }
