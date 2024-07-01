@@ -28,8 +28,6 @@ function App() {
   return (
     <BrowserRouter>
       <div className="App">
-      <HeaderWrapper toggleDrawer={toggleDrawer} />
-      <PersistentSidebar open={open} handleDrawerClose={toggleDrawer} />
         <Routes>
           <Route path="/" element={<Login />} />
           <Route path="/pocetna-admin" element={<PocetnaAdmin />} />
@@ -37,6 +35,8 @@ function App() {
           <Route path="/dodjeljivanje-nastavnika" element={<DodjeljivanjeNastavnika />} />
           <Route path="/izvodjenje-redmeta" element={<Izvodjenjepredmeta />} />
         </Routes>
+        <HeaderWrapper toggleDrawer={toggleDrawer} />
+        <PersistentSidebar open={open} handleDrawerClose={toggleDrawer} />
         <Footer />
       </div>
     </BrowserRouter>

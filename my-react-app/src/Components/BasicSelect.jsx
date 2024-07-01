@@ -5,7 +5,7 @@ import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
 
-function BasicSelect({label, dropdownOptions}){
+function BasicSelect({label, dropdownOptions, width}){
   const [selectedValue, setValue] = React.useState('');
 
   const handleChange = (event) => {
@@ -13,7 +13,7 @@ function BasicSelect({label, dropdownOptions}){
   };
 
   return (
-    <Box sx={{ minWidth: 120 }}>
+    <Box sx={{ minWidth: 120, width: width || 'auto'}}>
       <FormControl fullWidth>
         <InputLabel id="demo-simple-select-label">{label}</InputLabel>
         <Select
