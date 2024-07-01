@@ -110,3 +110,9 @@ main {
   text-align: left;
   width: 99%;
 }
+
+/* AK. GODINE */
+.searchFilter{
+  display: flex;
+  gap: 20px;
+}
