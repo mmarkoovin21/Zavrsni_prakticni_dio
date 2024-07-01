@@ -8,29 +8,32 @@ import Collapse from '@mui/material/Collapse';
 import { Link } from 'react-router-dom';
 import { Divider } from '@mui/material';
 
-function SidebarListAdmin({ toggleDrawer }) {
+function SidebarListProfesor({ toggleDrawer }) {
   const [rotate, setRotate] = useState(false);
 
   const handleClick = () => {
-    setOpen(!open);
+    React.setOpen(!open);
     setRotate(!rotate);
   };
 
   const items = [
-    { name: 'Početna', path: '/pocetna-admin' },
-    { name: 'Akademska Godina', path: '/pocetna-admin' },
-    { name: 'Dnevnik aktivnosti', path: '/pocetna-admin' },
+    { name: 'Početna', path: '/pocetna-profesor' },
+    { name: 'Katalozi', path: '/pocetna-profesor' },
   ];
 
   const dropdownItems = [
-    { name: 'Akademske godine', path: '/ak-godine' },
-    { name: 'Nastavnici', path: '/dodjeljivanje-nastavnika' },
-    { name: 'Predmeti', path: '/izvodjenje-redmeta' },
+    { name: 'Upisi studenta', path: '/pocetna-profesor' },
+    { name: 'Upisani studenti', path: '/pocetna-profesor' },
+    { name: 'Elementi praćenja', path: '/pocetna-profesor' },
+    { name: 'Bodovna skala', path: '/pocetna-profesor' },
+    { name: 'Pregled rezultata studenata', path: '/pregled-rezultata-studenta' },
+    { name: 'Unos rezultata studenata', path: '/unos-rezultata-studenta' },
+    { name: 'Kopiranje podataka kolegija', path: '/pocetna-profesor' },
   ];
 
   return (
     <List>
-      {items.filter(item => item.name !== 'Dnevnik aktivnosti').map((item) => (
+      {items.filter(item => item.name !== 'Katalozi').map((item) => (
         <ListItem 
          key={item.name} 
          component={Link} 
@@ -45,7 +48,7 @@ function SidebarListAdmin({ toggleDrawer }) {
         </ListItem>
       ))}
       <ListItem onClick={() => { handleClick(); }}>
-        <ListItemText primary="Katalozi" />
+        <ListItemText primary="Administracija kolegija" />
         <ListItemIcon style={{ transform: rotate ? 'rotate(90deg)' : 'none' }}>
           <ArrowForwardIos />
         </ListItemIcon>
@@ -69,7 +72,7 @@ function SidebarListAdmin({ toggleDrawer }) {
         </List>
       </Collapse>
       <Divider />
-      {items.filter(item => item.name === 'Dnevnik aktivnosti').map((item) => (
+      {items.filter(item => item.name === 'Katalozi').map((item) => (
         <ListItem 
             key={item.name} 
             component={Link} 
@@ -87,4 +90,4 @@ function SidebarListAdmin({ toggleDrawer }) {
   );
 }
 
-export default SidebarListAdmin;
+export default SidebarListProfesor;

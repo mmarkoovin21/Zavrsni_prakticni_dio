@@ -12,7 +12,10 @@ import AkGodina from './Components/pages/ak-godina';
 import PocetnaProfesor from './Components/pages/pocetna-profesor';
 import DetaljiStudenta from './Components/pages/detalji-studenta';
 import PregledRezultataStudenta from './Components/pages/pregled-rezultata-studenta';
-import UnosRezultataStudenta from './Components/pages/unos-rezultata-studenta';
+import UnosRezultataStudenata from './Components/pages/unos-rezultata-studenata.jsx';
+import SidebarListProfesor from './Components/SidebarListProfesor.jsx';
+import SidebarListAdmin from './Components/SidebarListAdmin.jsx';
+import User from './User.jsx';
 
 function HeaderWrapper({ toggleDrawer }) {
   const location = useLocation();
@@ -29,6 +32,16 @@ function App() {
     setOpen(prevOpen => !prevOpen);
   };
 
+  const sliderListProfesorComponent = <SidebarListProfesor toggleDrawer={toggleDrawer} />;
+  const sliderListAdminComponent = <SidebarListAdmin toggleDrawer={toggleDrawer} />;
+  let sidebarList = null;
+
+  if (User.type === 'admin') {
+    sidebarList = sliderListAdminComponent;
+  } else if (User.type === 'profesor') {
+    sidebarList = sliderListProfesorComponent;
+  }
+
   return (
     <BrowserRouter>
       <div className="App">
@@ -41,10 +54,12 @@ function App() {
           <Route path="/pocetna-profesor" element={<PocetnaProfesor />} />
           <Route path="/detalji-studenta" element={<DetaljiStudenta />} />
           <Route path="/pregled-rezultata-studenta" element={<PregledRezultataStudenta />} />
-          <Route path="/unos-rezultata-studenta" element={<UnosRezultataStudenta />} />
+          <Route path="/unos-rezultata-studenta" element={<UnosRezultataStudenata />} />
         </Routes>
         <HeaderWrapper toggleDrawer={toggleDrawer} />
-        <PersistentSidebar open={open} handleDrawerClose={toggleDrawer} />
+        <PersistentSidebar open={open} handleDrawerClose={toggleDrawer}>
+          {sidebarList}
+        </PersistentSidebar>
         <Footer />
       </div>
     </BrowserRouter>

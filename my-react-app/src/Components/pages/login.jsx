@@ -1,10 +1,11 @@
-import React, {useState} from 'react';
+import {useState} from 'react';
 import TextField from '@mui/material/TextField';
 import { Button } from '@mui/material';
 import '@fontsource/roboto/400.css';
 import Typography from '@mui/material/Typography';
 import Paper from '@mui/material/Paper';
-import {Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
+import User from '../../User.jsx';
 
 function Login () {
     const navigate = useNavigate();
@@ -21,13 +22,18 @@ function Login () {
         password: 'password123'
     }
 
+    globalThis.user = null;
+
     const handleLogin = () => {
         if (username === admin.username && password === admin.password) {	
             navigate('/pocetna-admin');
+            User.type = 'admin';
         } else if (username === profesor.username && password === profesor.password) {
             navigate('/pocetna-profesor');
+            User.type = 'profesor';
         } else {
             alert('Pogrešno korisničko ime ili lozinka');
+            User.type = null;
         }
     }
 

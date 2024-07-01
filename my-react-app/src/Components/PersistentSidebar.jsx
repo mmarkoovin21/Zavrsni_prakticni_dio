@@ -4,7 +4,7 @@ import CloseIcon from '@mui/icons-material/Close';
 import IconButton from '@mui/material/IconButton';
 import SidebarListAdmin from './SidebarListAdmin';
 
-const PersistentSidebar = ({ open, handleDrawerClose }) => {
+const PersistentSidebar = ({ open, handleDrawerClose, children }) => {
   return (
     <div>
       <Drawer
@@ -21,7 +21,7 @@ const PersistentSidebar = ({ open, handleDrawerClose }) => {
             <CloseIcon />
           </IconButton>
         </div>
-        <SidebarListAdmin toggleDrawer={handleDrawerClose}/>
+        {children}
       </Drawer>
     </div>
   );
