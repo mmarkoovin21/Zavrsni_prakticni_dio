@@ -5,7 +5,7 @@ function StudentResultsCard({student}){
         <div style={{width: '99%', marginBottom: '12px'}}>
             <Paper sx={{border: '2px solid black', mb: '10px'}}>
                 <div className='studentResultsCardContainer'>
-                    <img src={student.image} alt={student.imePrezime} style={{width: 'px', height: '100px', borderRadius: '5px', marginRight: '35px'}}/>
+                    <img src={student.image} alt={student.imePrezime} style={{width: '100px', height: '100px', borderRadius: '5px', marginRight: '35px'}}/>
                     <div style={{width: '100%'}}>
                         <Typography variant='h5' sx={{mb: '20px'}}>
                         {student.imePrezime}

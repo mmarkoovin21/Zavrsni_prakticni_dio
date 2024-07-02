@@ -6,6 +6,9 @@ import SearchIcon from '@mui/icons-material/Search';
 import TextField from '@mui/material/TextField';
 import StudentResultsCard from '../StudentresultsCard';
 import studentPicture1 from '../../assets/1650496476404.jpg';
+import studentPicture2 from '../../assets/1714330801509.jpg';
+import studentPicture3 from '../../assets/WIN_20230331_16_25_14_Pro.jpg';
+import studentPicture4 from '../../assets/at  first......jpeg';
 
 let dropdownYear = {
   2020: '2020',
@@ -44,6 +47,49 @@ let student1 = {
   image: studentPicture1
 }
 
+let student2 = {
+  imePrezime: 'Ante Bakula',
+  kolokvij1: '10',
+  kolokvij2: '10',
+  projekt1: '10',
+  projekt2: '10',
+  aktivnost: '10',
+  dodatniBodovi: '10',
+  ukupno: '60',
+  predlozenaOcijena: '3',
+  potpis: 'DA',
+  image: studentPicture2
+}
+
+let student3 = {
+  imePrezime: 'David Matijanić',
+  kolokvij1: '15',
+  kolokvij2: '18',
+  projekt1: '19',
+  projekt2: '30',
+  aktivnost: '10',
+  dodatniBodovi: '',
+  ukupno: '93',
+  predlozenaOcijena: '5',
+  potpis: 'DA',
+  image: studentPicture3
+}
+
+
+let student4 = {
+  imePrezime: 'Frano Šimić',
+  kolokvij1: '3',
+  kolokvij2: '5',
+  projekt1: '4',
+  projekt2: '12',
+  aktivnost: '0',
+  dodatniBodovi: '',
+  ukupno: '24',
+  predlozenaOcijena: '1',
+  potpis: 'NE',
+  image: studentPicture4
+}
+
 function PregledRezultataStudenta() {
   return (
     <div>
@@ -73,8 +119,9 @@ function PregledRezultataStudenta() {
               Rezultati studenata:
             </Typography>
             <StudentResultsCard student={student1}/>
-            <StudentResultsCard student={student1}/>
-            <StudentResultsCard student={student1}/>
+            <StudentResultsCard student={student2}/>
+            <StudentResultsCard student={student3}/>
+            <StudentResultsCard student={student4}/>
           </div>
         </main>
     </div>

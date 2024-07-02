@@ -34,24 +34,24 @@ function DodjeljivanjeNastavnika() {
     return (
         <main style={{marginBottom: '100px'}}>
             <div className="topNavigation">
-            <Link to="/pocetna-admin">Administrator</Link>
-            <ArrowForwardIos sx={{height: '14px'}}/>
-            <Link to="/pocetna-admin">Katalozi</Link>
-            <ArrowForwardIos sx={{height: '14px'}}/>
-            <Link to="/ak-godine">Akademske godine</Link>
+                <Link to="/pocetna-admin">Administrator</Link>
+                <ArrowForwardIos sx={{height: '14px'}}/>
+                <Link to="/pocetna-admin">Katalozi</Link>
+                <ArrowForwardIos sx={{height: '14px'}}/>
+                <Link to="/ak-godine">Akademske godine</Link>
             </div>
             <Typography variant="h3" sx={{marginBottom: '20px'}}>
             Dostupni kolegiji u akademskoj godini
             </Typography>
             <div className='searchFilter'>
-            <BasicSelect label="Godina" dropdownOptions={dropdownYear}/>
-            <BasicSelect label="Šifra" dropdownOptions={dropdownCode}/>
-            <BasicSelect label="Kolegij" dropdownOptions={dropdownCourse} width="30%"/>
-            <TextField  id="outlined-search" label="Pretraži" type="search"/>
-            <IconButton color="primary" aria-label="search" component="span">
-                <SearchIcon />
-            </IconButton>
-            <Button variant="contained" color="error">Očisti filtere</Button>
+                <BasicSelect label="Godina" dropdownOptions={dropdownYear}/>
+                <BasicSelect label="Šifra" dropdownOptions={dropdownCode}/>
+                <BasicSelect label="Kolegij" dropdownOptions={dropdownCourse} width="30%"/>
+                <TextField  id="outlined-search" label="Pretraži" type="search"/>
+                <IconButton color="primary" aria-label="search" component="span">
+                    <SearchIcon />
+                </IconButton>
+                <Button variant="contained" color="error">Očisti filtere</Button>
             </div>
             <div className='teachersLists'>
                 <div>

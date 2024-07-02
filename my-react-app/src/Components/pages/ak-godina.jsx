@@ -38,10 +38,13 @@ function AkGodina() {
           </IconButton>
           <Button variant="contained" color="error">Očisti filtere</Button>
         </div>
-        <div className='coursesList'>
+        <div className='cardListContainer'>
           <Typography variant="h6" sx={{marginBottom: '15px'}}>
             Dostupni kolegiji:
           </Typography>
+          <CourseCardAkYear title="Kolegij 1" text="Opis kolegija 1"/>
+          <CourseCardAkYear title="Kolegij 1" text="Opis kolegija 1"/>
+          <CourseCardAkYear title="Kolegij 1" text="Opis kolegija 1"/>
           <CourseCardAkYear title="Kolegij 1" text="Opis kolegija 1"/>
         </div>
       </main>
