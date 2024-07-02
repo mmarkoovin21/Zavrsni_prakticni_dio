@@ -181,3 +181,12 @@ main {
   grid-template-columns: repeat(2, 1fr);
   gap: 20px;
 }
+
+/* UNOS REZULTATA STUDENATA */
+
+.studentResultDetailsInput{
+  width: 90%;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
