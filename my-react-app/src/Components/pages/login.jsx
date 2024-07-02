@@ -6,6 +6,8 @@ import Typography from '@mui/material/Typography';
 import Paper from '@mui/material/Paper';
 import { useNavigate } from 'react-router-dom';
 import User from '../../User.jsx';
+import avatarImageAdmin from '../../assets/1650496476404.jpg';
+import avatarImageProfesor from '../../assets/1714330801509.jpg';
 
 function Login () {
     const navigate = useNavigate();
@@ -33,13 +35,17 @@ function Login () {
             navigate('/pocetna-admin');
             User.type = admin.type;
             User.name = admin.name;
+            User.profilePicture = avatarImageAdmin;
         } else if (username === profesor.username && password === profesor.password) {
             navigate('/pocetna-profesor');
             User.type = profesor.type;
             User.name = profesor.name;
+            User.profilePicture = avatarImageProfesor;
         } else {
             alert('Pogrešno korisničko ime ili lozinka');
             User.type = null;
+            User.name = null;
+            User.profilePicture = null;
         }
     }
 

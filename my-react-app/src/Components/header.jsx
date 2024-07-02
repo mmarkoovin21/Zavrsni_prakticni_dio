@@ -1,14 +1,16 @@
 import { useState } from "react";
+import { useNavigate } from 'react-router-dom';
 import MenuIcon from '@mui/icons-material/Menu';
 import Typography from '@mui/material/Typography';
 import Avatar from '@mui/material/Avatar';
 import IconButton from '@mui/material/IconButton';
 import ProfileMenu from './ProfileMenu';
-import avatarImage from '../assets/1650496476404.jpg';
+import User from '../User';
 
 function Header({ toggleDrawer }) {
   const [anchorEl, setAnchorEl] = useState(null);
   const open = Boolean(anchorEl);
+  const navigate = useNavigate();
 
   const handleAvatarClick = (event) => {
     setAnchorEl(event.currentTarget);
@@ -19,8 +21,11 @@ function Header({ toggleDrawer }) {
   };
 
   const handleLogout = () => {
-    console.log('Logging out...');
     handleClose();
+    User.type = null;
+    User.name = null;
+    User.profilePicture = null;
+    navigate('/');
   };
 
   return (
@@ -32,8 +37,8 @@ function Header({ toggleDrawer }) {
         Course Manager
       </Typography>
       <Avatar
-        alt="mmarkovin21"
-        src={avatarImage}
+        alt={User.username}
+        src={User.profilePicture}
         sx={{ width: 45, height: 45, cursor: 'pointer' }}
         onClick={handleAvatarClick}
       />

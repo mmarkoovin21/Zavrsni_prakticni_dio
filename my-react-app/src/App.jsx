@@ -20,7 +20,7 @@ import User from './User.jsx';
 function HeaderWrapper({ toggleDrawer }) {
   const location = useLocation();
   if (location.pathname !== "/") {
-    return <Header toggleDrawer={toggleDrawer} />;
+    return <Header toggleDrawer={toggleDrawer} avatarImage={User.profilePictures} />;
   }
   return null;
 }

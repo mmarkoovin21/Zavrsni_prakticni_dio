@@ -8,8 +8,9 @@ import SettingsIcon from '@mui/icons-material/Settings';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import LogoutIcon from '@mui/icons-material/Logout';
 import Typography from '@mui/material/Typography';
+import User from '../User';
 
-function ProfileMenu({ anchorEl, open, handleClose, handleLogout }) {
+function ProfileMenu({ anchorEl, open, handleClose, handleLogout}) {
   return (
     <Menu
       anchorEl={anchorEl}
@@ -23,30 +24,30 @@ function ProfileMenu({ anchorEl, open, handleClose, handleLogout }) {
       }}
     >
       <MenuItem>
-        <Typography variant="h6">Magdalena Markovinović</Typography>
+        <Typography variant="h6">{User.name}</Typography>
       </MenuItem>
       <MenuItem>
-        <Typography variant="body1">Administrator</Typography>
+        <Typography variant="body1">{User.type}</Typography>
       </MenuItem>
       <Divider />
       <MenuItem>
         <ListItemIcon>
           <SettingsIcon />
         </ListItemIcon>
-        <ListItemText>Settings</ListItemText>
+        <ListItemText>Postavke</ListItemText>
       </MenuItem>
       <MenuItem>
         <ListItemIcon>
           <AccountCircleIcon />
         </ListItemIcon>
-        <ListItemText>Profile</ListItemText>
+        <ListItemText>Profil</ListItemText>
       </MenuItem>
       <Divider />
       <MenuItem onClick={handleLogout}>
         <ListItemIcon>
           <LogoutIcon />
         </ListItemIcon>
-        <ListItemText>Logout</ListItemText>
+        <ListItemText>Odjava</ListItemText>
       </MenuItem>
     </Menu>
   );
