@@ -4,9 +4,9 @@ import { useNavigate } from 'react-router-dom';
 function StudentResultsCard({student}){
     const navigate = useNavigate();
 
-    const handleDetailsClick = () => {
-      navigate('/detalji-studenta', { state: { student } });
-    };
+    function handleClick(){
+        navigate('/detalji-studenta', {state: {student}});
+    }
     return (
         <div style={{width: '99%', marginBottom: '12px'}}>
             <Paper sx={{border: '2px solid black', mb: '10px'}}>
@@ -28,7 +28,7 @@ function StudentResultsCard({student}){
                                 <Typography variant='h6 '>{`Dodatni bodovi: ${student.dodatniBodovi}`}</Typography>
                                 <Typography variant='h6 '>{`Predložena ocijena: ${student.predlozenaOcijena}`}</Typography>
                             </div>
-                            <Button variant='contained' color='primary' sx={{mt: '20px'}} onClick={handleDetailsClick}>
+                            <Button variant='contained' color='primary' sx={{mt: '20px'}} onClick={handleClick}>
                                 Detalji
                             </Button>
                         </div>

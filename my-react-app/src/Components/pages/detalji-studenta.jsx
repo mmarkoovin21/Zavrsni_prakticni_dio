@@ -15,7 +15,7 @@ function DetaljiStudenta() {
                 <div className="topNavigation">
                     <Link to="/pocetna-profesor">Profesor</Link>
                     <ArrowForwardIos sx={{height: '14px'}}/>
-                    <Link to="/pocetna-profesor">Katalozi</Link>
+                    <Link to="/pocetna-profesor">Administracija kolegija</Link>
                     <ArrowForwardIos sx={{height: '14px'}}/>
                     <Link to="/pregled-rezultata-studenta">Pregled rezultata studenata</Link>
                 </div>

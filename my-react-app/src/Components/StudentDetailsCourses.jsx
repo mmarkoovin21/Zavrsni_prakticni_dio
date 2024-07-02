@@ -1,5 +1,4 @@
 import { Paper, Typography, Button } from '@mui/material';
-import { useLocation } from 'react-router-dom';
 
 function StudentDetailsCourses({course}){
     return (
