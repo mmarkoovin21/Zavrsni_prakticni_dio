@@ -13,11 +13,15 @@ function Login () {
     const [password, setPassword] = useState('');
 
     let admin = {
+        type: 'administrator',
+        name: 'Magdalena Markovinović',
         username: 'mmarkovin21',
         password: 'password123'
     }
 
     let profesor = {
+        type: 'profesor',
+        name: 'Profesor 1',
         username: 'profesor1',
         password: 'password123'
     }
@@ -27,10 +31,12 @@ function Login () {
     const handleLogin = () => {
         if (username === admin.username && password === admin.password) {	
             navigate('/pocetna-admin');
-            User.type = 'admin';
+            User.type = admin.type;
+            User.name = admin.name;
         } else if (username === profesor.username && password === profesor.password) {
             navigate('/pocetna-profesor');
-            User.type = 'profesor';
+            User.type = profesor.type;
+            User.name = profesor.name;
         } else {
             alert('Pogrešno korisničko ime ili lozinka');
             User.type = null;
