@@ -82,7 +82,7 @@ function DodjeljivanjeNastavnika() {
                     <Button variant="contained" color="primary">Dodaj sve</Button>
                     <Button variant="contained" color="error">Ukloni Nastavnika/e</Button>
                     <Button variant="contained" color="error">Ukloni sve</Button>
-                </div>
+            </div>
         </main>
     );
 }

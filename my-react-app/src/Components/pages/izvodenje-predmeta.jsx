@@ -64,7 +64,7 @@ function Izvodjenjepredmeta() {
                 <Button variant="contained" color="primary">Dodaj sve</Button>
                 <Button variant="contained" color="error">Ukloni Predmet/e</Button>
                 <Button variant="contained" color="error">Ukloni sve</Button>
-            </div>
+        </div>
     </main>
 );
 }
