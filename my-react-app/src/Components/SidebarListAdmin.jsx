@@ -6,9 +6,9 @@ import ListItemIcon from '@mui/material/ListItemIcon';
 import ArrowForwardIos from '@mui/icons-material/ArrowForwardIos';
 import Collapse from '@mui/material/Collapse';
 import { Link } from 'react-router-dom';
-import { Divider } from '@mui/material';
 
 function SidebarListAdmin({ toggleDrawer }) {
+  const [open, setOpen] = useState(false);
   const [rotate, setRotate] = useState(false);
 
   const handleClick = () => {
@@ -32,11 +32,11 @@ function SidebarListAdmin({ toggleDrawer }) {
     <List>
       {items.filter(item => item.name !== 'Dnevnik aktivnosti').map((item) => (
         <ListItem 
-         key={item.name} 
-         component={Link} 
-         to={item.path}
-         sx={{ color: 'black' }}
-         onClick={toggleDrawer}
+          key={item.name} 
+          component={Link} 
+          to={item.path}
+          sx={{ color: 'black' }}
+          onClick={toggleDrawer}
         >
           <ListItemText primary={item.name} />
           <ListItemIcon>
@@ -44,7 +44,7 @@ function SidebarListAdmin({ toggleDrawer }) {
           </ListItemIcon>
         </ListItem>
       ))}
-      <ListItem onClick={() => { handleClick(); }}>
+      <ListItem onClick={handleClick}>
         <ListItemText primary="Katalozi" />
         <ListItemIcon style={{ transform: rotate ? 'rotate(90deg)' : 'none' }}>
           <ArrowForwardIos />
@@ -68,21 +68,20 @@ function SidebarListAdmin({ toggleDrawer }) {
           ))}
         </List>
       </Collapse>
-      <Divider />
       {items.filter(item => item.name === 'Dnevnik aktivnosti').map((item) => (
         <ListItem 
-            key={item.name} 
-            component={Link} 
-            to={item.path} 
-            sx={{color: 'black' }} 
-            onClick={toggleDrawer}
-          >
-              <ListItemText primary={item.name} />
-              <ListItemIcon>
-                <ArrowForwardIos />
-              </ListItemIcon>
-            </ListItem>
-          ))}
+          key={item.name} 
+          component={Link} 
+          to={item.path} 
+          sx={{color: 'black' }} 
+          onClick={toggleDrawer}
+        >
+          <ListItemText primary={item.name} />
+          <ListItemIcon>
+            <ArrowForwardIos />
+          </ListItemIcon>
+        </ListItem>
+      ))}
     </List>
   );
 }

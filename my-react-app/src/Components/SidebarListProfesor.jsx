@@ -6,13 +6,13 @@ import ListItemIcon from '@mui/material/ListItemIcon';
 import ArrowForwardIos from '@mui/icons-material/ArrowForwardIos';
 import Collapse from '@mui/material/Collapse';
 import { Link } from 'react-router-dom';
-import { Divider } from '@mui/material';
 
 function SidebarListProfesor({ toggleDrawer }) {
+  const [open, setOpen] = useState(false);
   const [rotate, setRotate] = useState(false);
 
   const handleClick = () => {
-    React.setOpen(!open);
+    setOpen(!open);
     setRotate(!rotate);
   };
 
@@ -35,11 +35,11 @@ function SidebarListProfesor({ toggleDrawer }) {
     <List>
       {items.filter(item => item.name !== 'Katalozi').map((item) => (
         <ListItem 
-         key={item.name} 
-         component={Link} 
-         to={item.path}
-         sx={{ color: 'black' }}
-         onClick={toggleDrawer}
+          key={item.name} 
+          component={Link} 
+          to={item.path}
+          sx={{ color: 'black' }}
+          onClick={toggleDrawer}
         >
           <ListItemText primary={item.name} />
           <ListItemIcon>
@@ -47,7 +47,7 @@ function SidebarListProfesor({ toggleDrawer }) {
           </ListItemIcon>
         </ListItem>
       ))}
-      <ListItem onClick={() => { handleClick(); }}>
+      <ListItem onClick={handleClick}>
         <ListItemText primary="Administracija kolegija" />
         <ListItemIcon style={{ transform: rotate ? 'rotate(90deg)' : 'none' }}>
           <ArrowForwardIos />
@@ -55,7 +55,7 @@ function SidebarListProfesor({ toggleDrawer }) {
       </ListItem>
       <Collapse in={open} timeout="auto" unmountOnExit>
         <List component="div" disablePadding>
-          {dropdownItems.map((dropdownItem) => (
+          {dropdownItems.filter(dropdownItem => dropdownItem.name !== 'Administracija kolegija').map((dropdownItem) => (
             <ListItem 
               key={dropdownItem.name} 
               component={Link} 
@@ -71,21 +71,20 @@ function SidebarListProfesor({ toggleDrawer }) {
           ))}
         </List>
       </Collapse>
-      <Divider />
       {items.filter(item => item.name === 'Katalozi').map((item) => (
         <ListItem 
-            key={item.name} 
-            component={Link} 
-            to={item.path} 
-            sx={{color: 'black' }} 
-            onClick={toggleDrawer}
-          >
-              <ListItemText primary={item.name} />
-              <ListItemIcon>
-                <ArrowForwardIos />
-              </ListItemIcon>
-            </ListItem>
-          ))}
+          key={item.name} 
+          component={Link} 
+          to={item.path} 
+          sx={{color: 'black' }} 
+          onClick={toggleDrawer}
+        >
+          <ListItemText primary={item.name} />
+          <ListItemIcon>
+            <ArrowForwardIos />
+          </ListItemIcon>
+        </ListItem>
+      ))}
     </List>
   );
 }
