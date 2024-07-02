@@ -107,7 +107,7 @@ main {
 }
 
 .cardContainer{
-  width: 75%;
+  width: 95%;
   padding: 20px;
   margin: 0.5rem 0.8rem;
   text-align: left;
@@ -120,7 +120,7 @@ main {
   gap: 20px;
 }
 
-.coursesList{
+.cardListContainer{
   margin: 2rem 0;
 }
 
@@ -150,4 +150,18 @@ main {
   justify-content: flex-end;
 }
 
-  
+/* PREGLED REZULTATA STUDENATA */
+.studentResultDetails{
+  width: 90%;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 20px;
+}
+
+.studentResultsCardContainer{
+  display: flex;
+  width: 95%;
+  padding: 20px;
+  margin: 0.5rem 0.8rem;
+  text-align: left;
+}

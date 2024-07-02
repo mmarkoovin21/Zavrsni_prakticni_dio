@@ -4,6 +4,8 @@ import { ArrowForwardIos } from '@mui/icons-material';
 import BasicSelect from '../BasicSelect';
 import SearchIcon from '@mui/icons-material/Search';
 import TextField from '@mui/material/TextField';
+import StudentResultsCard from '../StudentresultsCard';
+import studentPicture1 from '../../assets/1650496476404.jpg';
 
 let dropdownYear = {
   2020: '2020',
@@ -28,29 +30,51 @@ let dropdownSort = {
   5: 'Silazno po broju bodova',
 };
 
+let student1 = {
+  imePrezime: 'Magdalena Markovinović',
+  kolokvij1: '10',
+  kolokvij2: '10',
+  projekt1: '10',
+  projekt2: '10',
+  aktivnost: '10',
+  dodatniBodovi: '10',
+  ukupno: '60',
+  predlozenaOcijena: '3',
+  potpis: 'DA',
+  image: studentPicture1
+}
+
 function PregledRezultataStudenta() {
   return (
     <div>
         <main style={{marginBottom: '100px'}}>
           <div className="topNavigation">
-          <Link to="/pocetna-profesor">Profesor</Link>
-          <ArrowForwardIos sx={{height: '14px'}}/>
-          <Link to="/pocetna-profesor">Katalozi</Link>
-          <ArrowForwardIos sx={{height: '14px'}}/>
-          <Link to="/pregled-rezultata-studenta">Pregled rezultata studenata</Link>
+            <Link to="/pocetna-profesor">Profesor</Link>
+            <ArrowForwardIos sx={{height: '14px'}}/>
+            <Link to="/pocetna-profesor">Katalozi</Link>
+            <ArrowForwardIos sx={{height: '14px'}}/>
+            <Link to="/pregled-rezultata-studenta">Pregled rezultata studenata</Link>
           </div>
           <Typography variant="h3" sx={{marginBottom: '20px'}}>
           Dostupni kolegiji u akademskoj godini
           </Typography>
           <div className='searchFilter'>
-          <BasicSelect label="Godina" dropdownOptions={dropdownYear}/>
-          <BasicSelect label="Kolegij" dropdownOptions={dropdownCourse} width='30rem'/>
-          <BasicSelect label="Sortiranje" dropdownOptions={dropdownSort}/>
-          <TextField  id="outlined-search" label="Pretraži" type="search"/>
-          <IconButton color="primary" aria-label="search" component="span">
-              <SearchIcon />
-          </IconButton>
-          <Button variant="contained" color="error">Očisti filtere</Button>
+            <BasicSelect label="Godina" dropdownOptions={dropdownYear}/>
+            <BasicSelect label="Kolegij" dropdownOptions={dropdownCourse} width='30rem'/>
+            <BasicSelect label="Sortiranje" dropdownOptions={dropdownSort}/>
+            <TextField  id="outlined-search" label="Pretraži" type="search"/>
+            <IconButton color="primary" aria-label="search" component="span">
+                <SearchIcon />
+            </IconButton>
+            <Button variant="contained" color="error">Očisti filtere</Button>
+          </div>
+          <div className='cardListContainer'>
+            <Typography variant="h6" sx={{marginBottom: '15px'}}>
+              Rezultati studenata:
+            </Typography>
+            <StudentResultsCard student={student1}/>
+            <StudentResultsCard student={student1}/>
+            <StudentResultsCard student={student1}/>
           </div>
         </main>
     </div>
