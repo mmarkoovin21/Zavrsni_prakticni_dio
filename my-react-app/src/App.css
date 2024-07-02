@@ -165,3 +165,19 @@ main {
   margin: 0.5rem 0.8rem;
   text-align: left;
 }
+
+/* DETALJI STUDENTA */
+
+.studentDetailCard{
+  display: flex;
+  width: 95%;
+  padding: 20px;
+  margin: 0.5rem 0.8rem;
+  text-align: left;
+}
+
+.studentDetailsContainer{
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}

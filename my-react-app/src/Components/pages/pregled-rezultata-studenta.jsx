@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import { Typography, Button, IconButton } from '@mui/material';
-import { ArrowForwardIos } from '@mui/icons-material';
+import { ArrowForwardIos, Email } from '@mui/icons-material';
 import BasicSelect from '../BasicSelect';
 import SearchIcon from '@mui/icons-material/Search';
 import TextField from '@mui/material/TextField';
@@ -33,61 +33,112 @@ let dropdownSort = {
   5: 'Silazno po broju bodova',
 };
 
+let courses1 =  [
+  {
+    id: 1,
+    name: 'Testiranje i kvaliteta programskih proizvoda',
+    kolokvij1: 10,
+    kolokvij2: 10,
+    projekt1: 10,
+    projekt2: 10,
+    aktivnost: 10,
+    dodatniBodovi: 10,
+    ukupno: 60,
+    predlozenaOcijena: 3,
+    potpis: 'DA',
+  },
+  {
+    id: 2,
+    name: 'Razvoj programskih proizvoda',
+    kolokvij1: 10,
+    kolokvij2: 10,
+    projekt1: 10,
+    projekt2: 10,
+    aktivnost: 10,
+    dodatniBodovi: 10,
+    ukupno: 60,
+    predlozenaOcijena: 3,
+    potpis: 'DA',
+  },
+  {
+    id: 3,
+    name: 'Analiza i razvoj računalnih programa',
+    kolokvij1: 10,
+    kolokvij2: 10,
+    projekt1: 10,
+    projekt2: 10,
+    aktivnost: 10,
+    dodatniBodovi: 10,
+    ukupno: 60,
+    predlozenaOcijena: 3,
+    potpis: 'DA',
+  },
+  {
+    id: 4,
+    name: 'Razvoj programskih proizvoda',
+    kolokvij1: 10,
+    kolokvij2: 10,
+    projekt1: 10,
+    projekt2: 10,
+    aktivnost: 10,
+    dodatniBodovi: 10,
+    ukupno: 60,
+    predlozenaOcijena: 3,
+    potpis: 'DA',
+  },
+];
+
 let student1 = {
   imePrezime: 'Magdalena Markovinović',
-  kolokvij1: '10',
-  kolokvij2: '10',
-  projekt1: '10',
-  projekt2: '10',
-  aktivnost: '10',
-  dodatniBodovi: '10',
-  ukupno: '60',
-  predlozenaOcijena: '3',
-  potpis: 'DA',
-  image: studentPicture1
+  jmbag: '0036475863',
+  datumRodenja: '12.12.2002.',
+  status: 'Redovni',
+  email: 'mmarkovin21@foi.hr',
+  brUpisanihPredmeta: '24',
+  brOdslusanihPredmeta: '23',
+  courses: courses1,
+  image: studentPicture1,
+  prosjek: '4.1'
 }
 
 let student2 = {
   imePrezime: 'Ante Bakula',
-  kolokvij1: '10',
-  kolokvij2: '10',
-  projekt1: '10',
-  projekt2: '10',
-  aktivnost: '10',
-  dodatniBodovi: '10',
-  ukupno: '60',
-  predlozenaOcijena: '3',
-  potpis: 'DA',
-  image: studentPicture2
+  jmbag: '0016073564',
+  datumRodenja: '12.20.1998.',
+  status: 'Izvanredni',
+  email: 'abakula19@foi.hr',
+  brUpisanihPredmeta: '24',
+  brOdslusanihPredmeta: '20',
+  courses: courses1,
+  image: studentPicture2,
+  prosjek: '2.9'
 }
 
 let student3 = {
   imePrezime: 'David Matijanić',
-  kolokvij1: '15',
-  kolokvij2: '18',
-  projekt1: '19',
-  projekt2: '30',
-  aktivnost: '10',
-  dodatniBodovi: '',
-  ukupno: '93',
-  predlozenaOcijena: '5',
-  potpis: 'DA',
-  image: studentPicture3
+  jmbag: '0017109928',
+  datumRodenja: '02.01.2002.',
+  status: 'Redovni',
+  email: 'dmatijani21@foi.hr',
+  brUpisanihPredmeta: '24',
+  brOdslusanihPredmeta: '20',
+  courses: courses1,
+  image: studentPicture3,
+  prosjek: '4.5'
 }
 
 
 let student4 = {
   imePrezime: 'Frano Šimić',
-  kolokvij1: '3',
-  kolokvij2: '5',
-  projekt1: '4',
-  projekt2: '12',
-  aktivnost: '0',
-  dodatniBodovi: '',
-  ukupno: '24',
-  predlozenaOcijena: '1',
-  potpis: 'NE',
-  image: studentPicture4
+  jmbag: '0016129837',
+  datumRodenja: '25.02.2002.',
+  status: 'Redovni',
+  email: 'fsimic21@foi.hr',
+  brUpisanihPredmeta: '24',
+  brOdslusanihPredmeta: '22',
+  courses: courses1,
+  image: studentPicture4,
+  prosjek: '3.5'
 }
 
 function PregledRezultataStudenta() {
