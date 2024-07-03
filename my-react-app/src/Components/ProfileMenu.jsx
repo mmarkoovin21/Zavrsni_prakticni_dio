@@ -8,9 +8,10 @@ import SettingsIcon from '@mui/icons-material/Settings';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import LogoutIcon from '@mui/icons-material/Logout';
 import Typography from '@mui/material/Typography';
-import User from '../User';
+import { useUser } from '../UserContext';
 
 function ProfileMenu({ anchorEl, open, handleClose, handleLogout}) {
+  const { user } = useUser();
   return (
     <Menu
       anchorEl={anchorEl}
@@ -24,10 +25,10 @@ function ProfileMenu({ anchorEl, open, handleClose, handleLogout}) {
       }}
     >
       <MenuItem>
-        <Typography variant="h6">{User.name}</Typography>
+        <Typography variant="h6">{user?.name}</Typography>
       </MenuItem>
       <MenuItem>
-        <Typography variant="body1">{User.type}</Typography>
+        <Typography variant="body1">{user?.type}</Typography>
       </MenuItem>
       <Divider />
       <MenuItem>

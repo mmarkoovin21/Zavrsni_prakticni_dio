@@ -5,12 +5,13 @@ import Typography from '@mui/material/Typography';
 import Avatar from '@mui/material/Avatar';
 import IconButton from '@mui/material/IconButton';
 import ProfileMenu from './ProfileMenu';
-import User from '../User';
+import { useUser } from '../UserContext';
 
 function Header({ toggleDrawer }) {
   const [anchorEl, setAnchorEl] = useState(null);
   const open = Boolean(anchorEl);
   const navigate = useNavigate();
+  const { user, setUser } = useUser();
 
   const handleAvatarClick = (event) => {
     setAnchorEl(event.currentTarget);
@@ -22,9 +23,7 @@ function Header({ toggleDrawer }) {
 
   const handleLogout = () => {
     handleClose();
-    User.type = null;
-    User.name = null;
-    User.profilePicture = null;
+    setUser(null);
     navigate('/');
   };
 
@@ -37,8 +36,8 @@ function Header({ toggleDrawer }) {
         Course Manager
       </Typography>
       <Avatar
-        alt={User.username}
-        src={User.profilePicture}
+        alt={user?.username}
+        src={user?.profilePicture}
         sx={{ width: 45, height: 45, cursor: 'pointer' }}
         onClick={handleAvatarClick}
       />

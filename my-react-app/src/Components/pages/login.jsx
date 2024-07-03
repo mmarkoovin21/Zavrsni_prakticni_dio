@@ -1,77 +1,71 @@
-import {useState} from 'react';
+import { useState } from 'react';
 import TextField from '@mui/material/TextField';
 import { Button } from '@mui/material';
 import '@fontsource/roboto/400.css';
 import Typography from '@mui/material/Typography';
 import Paper from '@mui/material/Paper';
 import { useNavigate } from 'react-router-dom';
-import User from '../../User.jsx';
+import { useUser } from '../../UserContext';
 import avatarImageAdmin from '../../assets/1650496476404.jpg';
 import avatarImageProfesor from '../../assets/1714330801509.jpg';
 
-function Login () {
-    const navigate = useNavigate();
-    const [username, setUsername] = useState('');
-    const [password, setPassword] = useState('');
+function Login() {
+  const navigate = useNavigate();
+  const { setUser } = useUser();
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
 
-    let admin = {
-        type: 'administrator',
-        name: 'Magdalena Markovinović',
-        username: 'mmarkovin21',
-        password: 'password123'
+  const admin = {
+    type: 'administrator',
+    name: 'Magdalena Markovinović',
+    username: 'mmarkovin21',
+    password: 'password123',
+    profilePicture: avatarImageAdmin
+  };
+
+  const profesor = {
+    type: 'profesor',
+    name: 'Profesor 1',
+    username: 'profesor1',
+    password: 'password123',
+    profilePicture: avatarImageProfesor
+  };
+
+  const handleLogin = (e) => {
+    e.preventDefault();
+    if (username === admin.username && password === admin.password) {
+      setUser(admin);
+      navigate('/pocetna-admin');
+    } else if (username === profesor.username && password === profesor.password) {
+      setUser(profesor);
+      navigate('/pocetna-profesor');
+    } else {
+      alert('Pogrešno korisničko ime ili lozinka');
+      setUser(null);
     }
-
-    let profesor = {
-        type: 'profesor',
-        name: 'Profesor 1',
-        username: 'profesor1',
-        password: 'password123'
-    }
-
-    globalThis.user = null;
-
-    const handleLogin = () => {
-        if (username === admin.username && password === admin.password) {	
-            navigate('/pocetna-admin');
-            User.type = admin.type;
-            User.name = admin.name;
-            User.profilePicture = avatarImageAdmin;
-        } else if (username === profesor.username && password === profesor.password) {
-            navigate('/pocetna-profesor');
-            User.type = profesor.type;
-            User.name = profesor.name;
-            User.profilePicture = avatarImageProfesor;
-        } else {
-            alert('Pogrešno korisničko ime ili lozinka');
-            User.type = null;
-            User.name = null;
-            User.profilePicture = null;
-        }
-    }
+  };
 
   return (
     <div className='login-container'>
       <form onSubmit={handleLogin}>
         <Paper className='login-text-fields' elevation={3}>
-            <Typography variant="h2" id="welcome-title" sx={{ width: '60%', mt: '3rem'}}>Dobrodošli u Course Manager</Typography>
-            <TextField 
-            id="standard-basic" 
-            label="Korisničko ime" 
-            variant="standard" 
-            sx={{ width: '50%', mt: '1rem'}}
-            value={username} 
-            onChange={(e) => setUsername(e.target.value)} />
-
-            <TextField 
-            id="standard-basic" 
-            label="Lozinka" 
-            variant="standard" 
-             type="password"
+          <Typography variant="h2" id="welcome-title" sx={{ width: '60%', mt: '3rem' }}>Dobrodošli u Course Manager</Typography>
+          <TextField
+            label="Korisničko ime"
+            variant="standard"
+            sx={{ width: '50%', mt: '1rem' }}
+            value={username}
+            onChange={(e) => setUsername(e.target.value)}
+          />
+          <TextField
+            label="Lozinka"
+            variant="standard"
+            type="password"
             sx={{ width: '50%' }}
-            value={password} 
-            onChange={(e) => setPassword(e.target.value)}/>
-
-            <Button type='submit' variant="contained" size="large">Prijavi se</Button>
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+          />
+          <Button type='submit' variant="contained" size="large">Prijavi se</Button>
         </Paper>
       </form>
     </div>
