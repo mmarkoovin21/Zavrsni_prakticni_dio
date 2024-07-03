@@ -6,6 +6,7 @@ import TextField from '@mui/material/TextField';
 import IconButton from '@mui/material/IconButton';
 import SearchIcon from '@mui/icons-material/Search';
 import CourseCardAkYear from '../CourseCardAkYear';
+import { courses } from '../courseData';
 
 let dropdownOptions = {
   2020: '2020',
@@ -42,10 +43,9 @@ function AkGodina() {
           <Typography variant="h6" sx={{marginBottom: '15px'}}>
             Dostupni kolegiji:
           </Typography>
-          <CourseCardAkYear title="Kolegij 1" text="Opis kolegija 1"/>
-          <CourseCardAkYear title="Kolegij 1" text="Opis kolegija 1"/>
-          <CourseCardAkYear title="Kolegij 1" text="Opis kolegija 1"/>
-          <CourseCardAkYear title="Kolegij 1" text="Opis kolegija 1"/>
+          {courses.map((course, index) => {
+            return <CourseCardAkYear key={index} course={course}/>
+          })}
         </div>
       </main>
     </div>

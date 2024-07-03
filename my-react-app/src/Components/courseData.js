@@ -1,4 +1,4 @@
-const export courses = [
+export const courses = [
     {
         id: 1,
         title: 'Testiranje i kvaliteta programskih proizvoda',
