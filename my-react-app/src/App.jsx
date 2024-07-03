@@ -13,7 +13,6 @@ import AkGodina from './Components/pages/ak-godina';
 import PocetnaProfesor from './Components/pages/pocetna-profesor';
 import DetaljiStudenta from './Components/pages/detalji-studenta';
 import PregledRezultataStudenta from './Components/pages/pregled-rezultata-studenta';
-import UnosRezultataStudenata from './Components/pages/unos-rezultata-studenata';
 import SidebarListProfesor from './Components/SidebarListProfesor';
 import SidebarListAdmin from './Components/SidebarListAdmin';
 
@@ -54,7 +53,6 @@ function App() {
           <Route path="/pocetna-profesor" element={<PocetnaProfesor />} />
           <Route path="/detalji-studenta" element={<DetaljiStudenta />} />
           <Route path="/pregled-rezultata-studenta" element={<PregledRezultataStudenta />} />
-          <Route path="/unos-rezultata-studenta" element={<UnosRezultataStudenata />} />
         </Routes>
         <HeaderWrapper toggleDrawer={toggleDrawer} />
         <PersistentSidebar open={open} handleDrawerClose={toggleDrawer}>

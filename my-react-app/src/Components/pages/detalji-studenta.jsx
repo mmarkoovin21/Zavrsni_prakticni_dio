@@ -4,10 +4,17 @@ import { ArrowForwardIos } from '@mui/icons-material';
 import StudentDetailsCard from '../StudentDetailsCard';
 import StudentDetailsCourses from '../StudentDetailsCourses';
 import { useLocation } from 'react-router-dom';
+import { Button } from '@mui/material';
+import { useNavigate } from 'react-router-dom';
 
 function DetaljiStudenta() {
     const location = useLocation();
+    const navigate = useNavigate();
     const student = location.state.student;
+
+    const redirectToEdit = () => {
+        navigate('/pregled-rezultata-studenta');
+    }
 
     return (
         <div>
@@ -30,6 +37,11 @@ function DetaljiStudenta() {
                     {student.courses.map((course) => (
                         <StudentDetailsCourses key={course.id} course={course} />
                     ))}
+                </div>
+                <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
+                    <Button variant='contained' color='primary' onClick={redirectToEdit}>
+                        Uredi bodove
+                    </Button>
                 </div>
             </main>
         </div>

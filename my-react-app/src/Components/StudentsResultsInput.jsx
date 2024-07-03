@@ -31,7 +31,7 @@ function StudentsResultsInput({student, course}){
                                 <div className='studentResultDetailsInput' style={{gridTemplateColumns: '1fr 1fr 1fr 1fr 1fr', gridTemplateRows: '1fr 1fr',}}>
                                     <div style={{display: 'grid',  gridTemplateColumns: '2fr 1fr', alignItems: 'center'}}>
                                         <Typography variant='body '>Kolikvij 1:</Typography>
-                                        <AdjustedTextFields value={courseData.kolokvij1} onChange={handleFieldChange('kolokvij1')} />
+                                        <AdjustedTextFields value={courseData.projekt1} onChange={handleFieldChange('kolokvij1')} />
                                     </div>
                                     <div style={{display: 'grid',  gridTemplateColumns: '2fr 1fr', alignItems: 'center',}}>
                                         <Typography variant='body'>Projekt 1:</Typography>

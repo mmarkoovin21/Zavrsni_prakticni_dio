@@ -137,6 +137,13 @@ function PregledRezultataStudenta() {
             </div>
           )
         }
+        {
+          !resultsImputDisplay && (
+            <Button variant='contained' color='primary'>
+              Izvezi podatke
+          </Button>
+          )
+        }
       </main>
     </div>
   );

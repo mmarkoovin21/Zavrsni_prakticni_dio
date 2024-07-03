@@ -21,9 +21,6 @@ function StudentDetailsCourses({course}){
                                 <Typography variant='h6 '>{`Dodatni bodovi: ${course.dodatniBodovi}`}</Typography>
                                 <Typography variant='h6 '>{`Predložena ocijena: ${course.predlozenaOcijena}`}</Typography>
                             </div>
-                            <Button variant='contained' color='primary' sx={{mt: '20px'}}>
-                                Uredi
-                            </Button>
                         </div>
                     </div>
                 </div>
