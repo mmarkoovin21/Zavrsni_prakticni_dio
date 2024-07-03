@@ -16,7 +16,7 @@ function ProfessorSelectCard({ professor}) {
                         {professor.name}
                     </Typography>
                     <Typography variant='h6 '>
-                        {professor.mail}
+                        {professor.email}
                     </Typography>
                 </div>
                 <div>

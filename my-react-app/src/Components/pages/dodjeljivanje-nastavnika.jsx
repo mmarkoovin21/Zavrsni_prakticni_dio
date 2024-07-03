@@ -1,36 +1,45 @@
+import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowForwardIos } from "@mui/icons-material";
 import { Button, Typography } from '@mui/material';
 import BasicSelect from '../BasicSelect';
-import TextField from '@mui/material/TextField';
-import IconButton from '@mui/material/IconButton';
-import SearchIcon from '@mui/icons-material/Search';
 import ListBox from '../ListBox';
+import { listProfesors } from '../courseData';
 import ProfessorSelectCard from '../ProfessorSelectCard';
-
-let dropdownYear = {
-    2020: '2020',
-    2021: '2021',
-    2022: '2022',
-    2023: '2023',
-    2024: '2024',
-  };
+import TextField from '@mui/material/TextField';
 
 let dropdownCourse = {
     1: 'Analiza i razvoj računalnih programa',
     2: 'Razvoj programskih proizvoda',
     3: 'Razvoj windows aplikacija',
-    4: 'Testiranje i kvaliteta programskih prioizvoda',
-};
-
-let dropdownCode = {
-    1: '82157',
-    2: '45634',
-    3: '56781',
-    4: '12134',
+    4: 'Testiranje i kvaliteta programskih proizvoda',
 };
 
 function DodjeljivanjeNastavnika() {
+    const [code, setCode] = useState('');
+    const [course, setCourse] = useState('');
+    const [filteredProfessors, setFilteredProfessors] = useState(listProfesors);
+
+    useEffect(() => {
+        const filterProfessors = () => {
+            let filtered = listProfesors.filter(professor => {
+                const matchesCode = code ? professor.code === code : true;
+                const matchesCourse = course ? professor.course === course : true;
+    
+                return matchesCode && matchesCourse;
+            });
+            setFilteredProfessors(filtered);
+        };
+    
+        filterProfessors();
+    }, [code, course]);
+    
+    const handleClearFilters = () => {
+        setCode('');
+        setCourse('');
+        setFilteredProfessors(listProfesors); // Reset to initial list
+    };
+
     return (
         <main style={{marginBottom: '100px'}}>
             <div className="topNavigation">
@@ -44,14 +53,9 @@ function DodjeljivanjeNastavnika() {
             Dostupni kolegiji u akademskoj godini
             </Typography>
             <div className='searchFilter'>
-                <BasicSelect label="Godina" dropdownOptions={dropdownYear}/>
-                <BasicSelect label="Šifra" dropdownOptions={dropdownCode}/>
-                <BasicSelect label="Kolegij" dropdownOptions={dropdownCourse} width="30%"/>
-                <TextField  id="outlined-search" label="Pretraži" type="search"/>
-                <IconButton color="primary" aria-label="search" component="span">
-                    <SearchIcon />
-                </IconButton>
-                <Button variant="contained" color="error">Očisti filtere</Button>
+                <TextField id="outlined-search-code" label="Šifra Kolegija" type="search" value={code} onChange={(e) => setCode(e.target.value)}/>
+                <BasicSelect label="Kolegij" dropdownOptions={dropdownCourse} value={course} onChange={(e) => setCourse(e.target.value)} width="30%"/>
+                <Button variant="contained" color="error" onClick={handleClearFilters}>Očisti filtere</Button>
             </div>
             <div className='teachersLists'>
                 <div>
@@ -59,7 +63,9 @@ function DodjeljivanjeNastavnika() {
                         Lista nastavnika koji NE predaju na predmetu:
                     </Typography>
                     <ListBox>
-                        <ProfessorSelectCard professor="Ivan Ivanović" mail="prof.prof@foi.hr" />
+                        {filteredProfessors.map((professor, index) => (
+                            <ProfessorSelectCard key={index} professor={professor} />
+                        ))}
                     </ListBox>
                 </div>
                 <div>
@@ -67,21 +73,17 @@ function DodjeljivanjeNastavnika() {
                         Lista nastavnika koji predaju na predmetu:
                     </Typography>
                     <ListBox>
-                        <ProfessorSelectCard professor="Ivan Ivanović" mail="prof.prof@foi.hr" />
-                        <ProfessorSelectCard professor="Ivan Ivanović" mail="prof.prof@foi.hr" />
-                        <ProfessorSelectCard professor="Ivan Ivanović" mail="prof.prof@foi.hr" />
-                        <ProfessorSelectCard professor="Ivan Ivanović" mail="prof.prof@foi.hr" />
-                        <ProfessorSelectCard professor="Ivan Ivanović" mail="prof.prof@foi.hr" />
-                        <ProfessorSelectCard professor="Ivan Ivanović" mail="prof.prof@foi.hr" />
-                        <ProfessorSelectCard professor="Ivan Ivanović" mail="prof.prof@foi.hr" />
+                        {filteredProfessors.map((professor, index) => (
+                            <ProfessorSelectCard key={index} professor={professor} />
+                        ))}
                     </ListBox>
                 </div>
             </div>
             <div className='bottomButtons'>
-                    <Button variant="contained" color="primary">Dodaj Nastavnika/e</Button>
-                    <Button variant="contained" color="primary">Dodaj sve</Button>
-                    <Button variant="contained" color="error">Ukloni Nastavnika/e</Button>
-                    <Button variant="contained" color="error">Ukloni sve</Button>
+                <Button variant="contained" color="primary">Dodaj Nastavnika/e</Button>
+                <Button variant="contained" color="primary">Dodaj sve</Button>
+                <Button variant="contained" color="error">Ukloni Nastavnika/e</Button>
+                <Button variant="contained" color="error">Ukloni sve</Button>
             </div>
         </main>
     );
