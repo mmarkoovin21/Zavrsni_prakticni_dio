@@ -88,7 +88,7 @@
             ects: 7,
             katedra: 'Katedra za razvoj informacisjkih sustava',
             profesors: [listProfesors[3], listProfesors[4], listProfesors[5]],
-            years: [2020, 2021, 2022, 2023, 2024],
+            years: [ 2023, 2024],
         },
         {
             id: 3,
@@ -99,7 +99,7 @@
             ects: 4,
             katedra: 'Katedra za razvoj informacisjkih sustava',
             profesors: [listProfesors[6], listProfesors[7], listProfesors[8], listProfesors[9],],
-            years: [2023, 2024],
+            years: [2021, 2023, 2024],
         },
         {
             id: 4,
