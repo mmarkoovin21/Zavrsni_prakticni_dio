@@ -28,15 +28,16 @@ function PregledRezultataStudenta() {
   const [searchText, setSearchText] = useState('');
   const [selectedCourse, setSelectedCourse] = useState('');
   const [selectedSort, setSelectedSort] = useState('');
+  const [selectedCourseName, setSelectedCourseName] = useState("");
 
   const handleSearchChange = (event) => {
     setSearchText(event.target.value);
   };
 
   const handleCourseChange = (value) => {
-    const courseName = dropdownCourse[value];
-    console.log("Before setting state:", value);
+    const courseName = dropdownCourse[value]
     setSelectedCourse(value);
+    setSelectedCourseName(courseName);
   };
 
   const handleSortChange = (sortOption) => {
@@ -45,7 +46,7 @@ function PregledRezultataStudenta() {
 
   const filterStudents = () => {
     let filtered = students.filter(student => {
-      const matchesCourse = selectedCourse ? student.courses.some(course => course.name === selectedCourse) : false;
+      const matchesCourse = selectedCourseName ? student.courses.some(course => course.name === selectedCourseName) : false;
       const matchesText = searchText ? student.imePrezime.toLowerCase().includes(searchText.toLowerCase()) : true;
       return matchesCourse && matchesText;
     });
@@ -58,7 +59,7 @@ function PregledRezultataStudenta() {
         filtered.sort((a, b) => b.imePrezime.localeCompare(a.imePrezime));
         break;
       case '3':
-        filtered = filtered.filter(student => student.courses.some(course => course.name === selectedCourse && course.potpis === 'NE'));
+        filtered = filtered.filter(student => student.courses.some(course => course.name === selectedCourseName && course.potpis === 'NE'));
         break;
       default:
         break;
@@ -71,12 +72,13 @@ function PregledRezultataStudenta() {
     setSelectedCourse('');
     setSearchText('');
     setSelectedSort('');
+    setSelectedCourseName('');
     setFilteredStudents([]);
   };
 
   useEffect(() => {
     filterStudents();
-  }, [searchText, selectedCourse, selectedSort]);
+  }, [searchText, selectedCourse, selectedSort, selectedCourseName]);
 
   return (
     <div>
@@ -93,7 +95,6 @@ function PregledRezultataStudenta() {
         </Typography>
         <div className='searchFilter'>
           <BasicSelect label="Kolegij" dropdownOptions={dropdownCourse} value={selectedCourse} onChange={(e) => handleCourseChange(e.target.value)} width='30rem' />
-            {console.log("Component render, selectedValue:", selectedCourse)}
           <BasicSelect label="Sortiranje" dropdownOptions={dropdownSort} value={selectedSort} onChange={(e) => handleSortChange(e.target.value)} />
           <TextField id="outlined-search" label="Pretraži" type="search" value={searchText} onChange={handleSearchChange} />
           <Button variant="contained" color="error" onClick={resetFilters}>Očisti filtere</Button>
@@ -108,7 +109,7 @@ function PregledRezultataStudenta() {
             </Typography>
           )}
           {filteredStudents.map((student, index) => (
-            <StudentResultsCard key={index} student={student} course={selectedCourse} />
+            <StudentResultsCard key={index} student={student} course={selectedCourseName} />
           ))}
         </div>
       </main>
