@@ -4,6 +4,7 @@ import { Typography, Button, TextField } from '@mui/material';
 import { ArrowForwardIos } from '@mui/icons-material';
 import BasicSelect from '../BasicSelect';
 import StudentResultsCard from '../StudentresultsCard';
+import StudentsResultsInput from '../StudentsResultsInput';
 import { student1, student2, student3, student4 } from '../studentData.js';
 
 const dropdownCourse = {
@@ -29,6 +30,7 @@ function PregledRezultataStudenta() {
   const [selectedCourse, setSelectedCourse] = useState('');
   const [selectedSort, setSelectedSort] = useState('');
   const [selectedCourseName, setSelectedCourseName] = useState("");
+  const [resultsImputDisplay, setResultsImputDisplay] = useState(false);
 
   const handleSearchChange = (event) => {
     setSearchText(event.target.value);
@@ -80,6 +82,10 @@ function PregledRezultataStudenta() {
     filterStudents();
   }, [searchText, selectedCourse, selectedSort, selectedCourseName]);
 
+  const resultsImputHandle = () => {
+    setResultsImputDisplay(current => !current);
+  }
+
   return (
     <div>
       <main style={{ marginBottom: '100px' }}>
@@ -98,6 +104,11 @@ function PregledRezultataStudenta() {
           <BasicSelect label="Sortiranje" dropdownOptions={dropdownSort} value={selectedSort} onChange={(e) => handleSortChange(e.target.value)} />
           <TextField id="outlined-search" label="Pretraži" type="search" value={searchText} onChange={handleSearchChange} />
           <Button variant="contained" color="error" onClick={resetFilters}>Očisti filtere</Button>
+          {
+            !resultsImputDisplay ? 
+            <Button variant="contained" color="primary" onClick={resultsImputHandle} sx={{ml: '160px'}}>Unos rezultata</Button> : 
+            <div></div>
+          }
         </div>
         <div className='cardListContainer'>
           <Typography variant="h6" sx={{ marginBottom: '15px' }}>
@@ -108,10 +119,24 @@ function PregledRezultataStudenta() {
               Odaberite kolegij.
             </Typography>
           )}
-          {filteredStudents.map((student, index) => (
-            <StudentResultsCard key={index} student={student} course={selectedCourseName} />
-          ))}
+          {
+            resultsImputDisplay ? 
+              filteredStudents.map((student, index) => (
+                <StudentsResultsInput key={index} student={student} course={selectedCourseName} />
+              )) : 
+              filteredStudents.map((student, index) => (
+                <StudentResultsCard key={index} student={student} course={selectedCourseName} />
+              ))
+          }
         </div>
+        {
+          resultsImputDisplay && (
+            <div className='bottomButtons'>
+              <Button variant="contained" color="primary" onClick={resultsImputHandle}>Spremi</Button>
+              <Button variant="contained" color="error" onClick={resultsImputHandle}>Odustani</Button>
+            </div>
+          )
+        }
       </main>
     </div>
   );

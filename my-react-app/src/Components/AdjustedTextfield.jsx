@@ -1,11 +1,14 @@
 import { TextField } from "@mui/material";
 
-function AdjustedTextFields() {
+function AdjustedTextFields({value, onChange}) {
+  console.log(value);
   return (
     <TextField 
   id="outlined-basic" 
   label="" 
   variant="outlined" 
+  value = {value}
+  onChange={onChange}
   sx={{ 
     width: '60px', 
     '& .MuiInputBase-root': { 

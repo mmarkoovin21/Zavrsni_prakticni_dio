@@ -27,7 +27,6 @@ function SidebarListProfesor({ toggleDrawer }) {
     { name: 'Elementi praćenja', path: '/pocetna-profesor' },
     { name: 'Bodovna skala', path: '/pocetna-profesor' },
     { name: 'Pregled rezultata studenata', path: '/pregled-rezultata-studenta' },
-    { name: 'Unos rezultata studenata', path: '/unos-rezultata-studenta' },
     { name: 'Kopiranje podataka kolegija', path: '/pocetna-profesor' },
   ];
 
