@@ -1,4 +1,4 @@
-    export const TKPPProf = [
+    export const listProfesors = [
         {
             name: 'Kitinić Valentina',
             title: 'prof. dr. sc.',
@@ -14,10 +14,6 @@
             title: 'doc. dr. sc.',
             email: 'bmarijana@foi.hr',
         },
-
-    ];
-
-    export const PISProf = [
         {
             name: 'Andročec Darko',
             title: 'prof. dr. sc.',
@@ -33,18 +29,10 @@
             title: 'prof. dr. sc.',
             email: 'doreski@foi.hr',
         },
-    ];
-
-    export const RWAProf = [
         {
             name: 'Stapić Zlatko',
             title: 'prof. dr. sc.',
             email: 'zstapic@foi.hr',
-        },
-        {
-            name: 'Mijač Marko',
-            title: 'doc. dr. sc.',
-            email: 'mmarko@foi.hr',
         },
         {
             name: 'Masnec Lea',
@@ -61,28 +49,10 @@
             title: 'doc. dr. sc.',
             email: 'vklaric@foi.hr',
         },
-    ];
-
-    export const ARPProf = [
-        {
-            name: 'Stapić Zlatko',
-            title: 'prof. dr. sc.',
-            email: 'zstapic@foi.hr',
-        },
         {
             name: 'Vrček Neven',
             title: 'prof. dr. sc.',
             email: 'nvrcek@foi.hr',
-        },
-        {
-            name: 'Masnec Lea',
-            title: 'doc. dr. sc.',
-            email: 'lmasnec@foi.hr',
-        },
-        {
-            name: 'Klarić Vedran',
-            title: 'doc. dr. sc.',
-            email: 'vklaric@foi.hr',
         },
     ];
 
@@ -94,8 +64,8 @@
             major: 'Informacijski i poslovni sustavi 1.2 (IPS)',
             semester: 6,
             ects: 6,
-            katedra: 'Katedra za rzvoj informacisjkih sustava',
-            profesors: TKPPProf,
+            katedra: 'Katedra za razvoj informacisjkih sustava',
+            profesors: [listProfesors[0], listProfesors[1], listProfesors[2]],	
             years: [2020, 2021, 2022, 2023, 2024],
         },
         {
@@ -105,8 +75,8 @@
             major: 'Informacijski i poslovni sustavi 1.2 (IPS)',
             semester: 3,
             ects: 7,
-            katedra: 'Katedra za rzvoj informacisjkih sustava',
-            profesors: PISProf,
+            katedra: 'Katedra za razvoj informacisjkih sustava',
+            profesors: [listProfesors[3], listProfesors[4], listProfesors[5]],
             years: [2020, 2021, 2022, 2023, 2024],
         },
         {
@@ -116,8 +86,8 @@
             major: 'Informacijski i poslovni sustavi 1.2 (IPS)',
             semester: 4,
             ects: 4,
-            katedra: 'Katedra za rzvoj informacisjkih sustava',
-            profesors: RWAProf,
+            katedra: 'Katedra za razvoj informacisjkih sustava',
+            profesors: [listProfesors[6], listProfesors[7], listProfesors[8], listProfesors[9],],
             years: [2023, 2024],
         },
         {
@@ -127,8 +97,8 @@
             major: 'Informacijski i poslovni sustavi 1.2 (IPS)',
             semester: 4,
             ects: 4,
-            katedra: 'Katedra za rzvoj informacisjkih sustava',
-            profesors: ARPProf,
+            katedra: 'Katedra za razvoj informacisjkih sustava',
+            profesors: [listProfesors[6], listProfesors[7], listProfesors[9], listProfesors[10],],
             years: [2020, 2021,],
         },
     ];

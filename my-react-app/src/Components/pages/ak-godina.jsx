@@ -3,8 +3,6 @@ import { ArrowForwardIos } from "@mui/icons-material";
 import { Button, Typography } from '@mui/material';
 import BasicSelect from '../BasicSelect';
 import TextField from '@mui/material/TextField';
-import IconButton from '@mui/material/IconButton';
-import SearchIcon from '@mui/icons-material/Search';
 import CourseCardAkYear from '../CourseCardAkYear';
 import { courses } from '../courseData';
 import { useEffect, useState } from 'react';
