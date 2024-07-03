@@ -5,12 +5,7 @@ import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
 
-function BasicSelect({label, dropdownOptions, width}){
-  const [selectedValue, setValue] = React.useState('');
-
-  const handleChange = (event) => {
-    setValue(event.target.value);
-  };
+function BasicSelect({label, dropdownOptions, width, value, onChange}){
 
   return (
     <Box sx={{ minWidth: 120, width: width || 'auto'}}>
@@ -19,9 +14,9 @@ function BasicSelect({label, dropdownOptions, width}){
         <Select
           labelId="demo-simple-select-label"
           id="demo-simple-select"
-          value={selectedValue}
+          value={value}
           label={label}
-          onChange={handleChange}
+          onChange={onChange}
         >
           {Object.entries(dropdownOptions).map(([value, label]) => (
             <MenuItem key={value} value={value}>{label}</MenuItem>

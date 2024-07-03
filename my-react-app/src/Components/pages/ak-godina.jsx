@@ -7,6 +7,7 @@ import IconButton from '@mui/material/IconButton';
 import SearchIcon from '@mui/icons-material/Search';
 import CourseCardAkYear from '../CourseCardAkYear';
 import { courses } from '../courseData';
+import { useEffect, useState } from 'react';
 
 let dropdownOptions = {
   2020: '2020',
@@ -17,6 +18,38 @@ let dropdownOptions = {
 };
 
 function AkGodina() {
+  const [filteredCourses, setFilteredCourses] = useState(courses);
+  const [searchText, setSearchText] = useState('');
+  const [selectedYear, setSelectedYear] = useState('');
+
+  const handleSearchChange = (event) => {
+    setSearchText(event.target.value);
+  };
+
+  const handleYearChange = (year) => {
+    setSelectedYear(parseInt(year, 10));
+  };
+
+  const filterCourses = () => {
+    const filtered = courses.filter(course => {
+      const matchesYear = selectedYear ? course.years.includes(parseInt(selectedYear, 10)) : true;
+      const matchesText = searchText ? course.title.toLowerCase().includes(searchText.toLowerCase()) : true;
+      return matchesYear && matchesText;
+    });
+    setFilteredCourses(filtered);
+    console.log(filtered);
+  };
+
+  const resetFilters = () => {
+    setSelectedYear('');
+    setSearchText('');
+    filterCourses();
+  };
+
+  useEffect(() => {
+    filterCourses();
+  }, [searchText, selectedYear]);
+
   console.log('Rendering AkGodina');
   return (
     <div>
@@ -32,18 +65,15 @@ function AkGodina() {
           Dostupni kolegiji u akademskoj godini
         </Typography>
         <div className='searchFilter'>
-          <BasicSelect label="Godina" dropdownOptions={dropdownOptions}/>
-          <TextField  id="outlined-search" label="Pretraži" type="search"/>
-          <IconButton color="primary" aria-label="search" component="span">
-            <SearchIcon />
-          </IconButton>
-          <Button variant="contained" color="error">Očisti filtere</Button>
+          <BasicSelect label="Godina" value={selectedYear} dropdownOptions={dropdownOptions} onChange={(e) => handleYearChange(e.target.value)}/>
+          <TextField  id="outlined-search" label="Pretraži" type="search" onChange={handleSearchChange}/>
+          <Button variant="contained" color="error" onClick={resetFilters}>Očisti filtere</Button>
         </div>
         <div className='cardListContainer'>
           <Typography variant="h6" sx={{marginBottom: '15px'}}>
             Dostupni kolegiji:
           </Typography>
-          {courses.map((course, index) => {
+          {filteredCourses.map((course, index) => {
             return <CourseCardAkYear key={index} course={course}/>
           })}
         </div>
