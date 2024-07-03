@@ -1,3 +1,91 @@
+    export const TKPPProf = [
+        {
+            name: 'Kitinić Valentina',
+            title: 'prof. dr. sc.',
+            email: 'vkirinic@foi.hr',
+        },
+        {
+            name: 'Mijač Marko',
+            title: 'doc. dr. sc.',
+            email: 'mmarko@foi.hr',
+        },
+        {
+            name: 'Berket Marijana',
+            title: 'doc. dr. sc.',
+            email: 'bmarijana@foi.hr',
+        },
+
+    ];
+
+    export const PISProf = [
+        {
+            name: 'Andročec Darko',
+            title: 'prof. dr. sc.',
+            email: 'adarko@foi.hr',
+        },
+        {
+            name: 'Strahonja Vjeran',
+            title: 'prof. dr. sc.',
+            email: 'vstrahonjaa@foi.hr',
+        },
+        {
+            name: 'Oreški Dijana',
+            title: 'prof. dr. sc.',
+            email: 'doreski@foi.hr',
+        },
+    ];
+
+    export const RWAProf = [
+        {
+            name: 'Stapić Zlatko',
+            title: 'prof. dr. sc.',
+            email: 'zstapic@foi.hr',
+        },
+        {
+            name: 'Mijač Marko',
+            title: 'doc. dr. sc.',
+            email: 'mmarko@foi.hr',
+        },
+        {
+            name: 'Masnec Lea',
+            title: 'doc. dr. sc.',
+            email: 'lmasnec@foi.hr',
+        },
+        {
+            name: 'Takač Kristina',
+            title: 'doc. dr. sc.',
+            email: 'ktakač@foi.hr',
+        },
+        {
+            name: 'Klarić Vedran',
+            title: 'doc. dr. sc.',
+            email: 'vklaric@foi.hr',
+        },
+    ];
+
+    export const ARPProf = [
+        {
+            name: 'Stapić Zlatko',
+            title: 'prof. dr. sc.',
+            email: 'zstapic@foi.hr',
+        },
+        {
+            name: 'Vrček Neven',
+            title: 'prof. dr. sc.',
+            email: 'nvrcek@foi.hr',
+        },
+        {
+            name: 'Masnec Lea',
+            title: 'doc. dr. sc.',
+            email: 'lmasnec@foi.hr',
+        },
+        {
+            name: 'Klarić Vedran',
+            title: 'doc. dr. sc.',
+            email: 'vklaric@foi.hr',
+        },
+    ];
+
     export const courses = [
         {
             id: 1,
@@ -7,7 +95,7 @@
             semester: 6,
             ects: 6,
             katedra: 'Katedra za rzvoj informacisjkih sustava',
-            profesors: ['Kitinić Valentina' , 'Mijač Marko', 'Berket Marijana'],
+            profesors: TKPPProf,
             years: [2020, 2021, 2022, 2023, 2024],
         },
         {
@@ -18,7 +106,7 @@
             semester: 3,
             ects: 7,
             katedra: 'Katedra za rzvoj informacisjkih sustava',
-            profesors: ['Andročec Darko' , 'Strahonja Vjeran', 'Oreški Dijana'],
+            profesors: PISProf,
             years: [2020, 2021, 2022, 2023, 2024],
         },
         {
@@ -29,7 +117,7 @@
             semester: 4,
             ects: 4,
             katedra: 'Katedra za rzvoj informacisjkih sustava',
-            profesors: ['Stapić Zlatko' , 'Mijač Marko', 'Masnec Lea', 'Takač Kristina', 'Klarić Vedran'],
+            profesors: RWAProf,
             years: [2023, 2024],
         },
         {
@@ -40,7 +128,7 @@
             semester: 4,
             ects: 4,
             katedra: 'Katedra za rzvoj informacisjkih sustava',
-            profesors: ['Stapić Zlatko' , 'Vrček Neven', 'Masnec Lea', 'Klarić vedran'],
+            profesors: ARPProf,
             years: [2020, 2021,],
         },
     ];

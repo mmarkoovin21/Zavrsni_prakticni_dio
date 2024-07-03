@@ -17,9 +17,9 @@ function CourseCardAkYear({course}){
                             <Typography variant='body'>{`Studij: ${course.major}`}</Typography>
                             <Typography variant='body' sx={{ width: '200px' }}>{`ECTS: ${course.ects}`}</Typography>
                             <Typography variant='body' style={{ whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
-                               {`Nastavnici: ${course.profesors.join(', ')}`}
+                            {`Nastavnici: ${course.profesors.map(prof => prof.name).join(', ')}`}
                             </Typography>
-                                                    </div>
+                        </div>
                         <Button variant='contained' color='primary' sx={{mt: '20px'}}>
                             Detalji
                         </Button>
