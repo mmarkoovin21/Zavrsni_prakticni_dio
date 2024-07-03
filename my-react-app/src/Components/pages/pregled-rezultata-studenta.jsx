@@ -1,69 +1,117 @@
+import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { Typography, Button, IconButton } from '@mui/material';
-import { ArrowForwardIos, Email } from '@mui/icons-material';
+import { Typography, Button, TextField } from '@mui/material';
+import { ArrowForwardIos } from '@mui/icons-material';
 import BasicSelect from '../BasicSelect';
-import SearchIcon from '@mui/icons-material/Search';
-import TextField from '@mui/material/TextField';
 import StudentResultsCard from '../StudentresultsCard';
 import { student1, student2, student3, student4 } from '../studentData.js';
 
-let dropdownYear = {
-  2020: '2020',
-  2021: '2021',
-  2022: '2022',
-  2023: '2023',
-  2024: '2024',
-};
-
-let dropdownCourse = {
-  1: 'Analiza i razvoj računalnih programa',
+const dropdownCourse = {
+  1: 'Analiza i razvoj programa',
   2: 'Razvoj programskih proizvoda',
   3: 'Razvoj windows aplikacija',
-  4: 'Testiranje i kvaliteta programskih prioizvoda',
+  4: 'Testiranje i kvaliteta programskih proizvoda',
 };
 
-let dropdownSort = {
+const dropdownSort = {
   1: 'A-Z',
   2: 'Z-A',
   3: 'Nema potpis',
-  4: 'Uzlazno po broju bodova',
-  5: 'Silazno po broju bodova',
+  // 4: 'Uzlazno po broju bodova',
+  // 5: 'Silazno po broju bodova',
 };
 
+const students = [student1, student2, student3, student4];
+
 function PregledRezultataStudenta() {
+  const [filteredStudents, setFilteredStudents] = useState([]);
+  const [searchText, setSearchText] = useState('');
+  const [selectedCourse, setSelectedCourse] = useState('');
+  const [selectedSort, setSelectedSort] = useState('');
+
+  const handleSearchChange = (event) => {
+    setSearchText(event.target.value);
+  };
+
+  const handleCourseChange = (value) => {
+    const courseName = dropdownCourse[value];
+    console.log("Before setting state:", value);
+    setSelectedCourse(value);
+  };
+
+  const handleSortChange = (sortOption) => {
+    setSelectedSort(sortOption);
+  };
+
+  const filterStudents = () => {
+    let filtered = students.filter(student => {
+      const matchesCourse = selectedCourse ? student.courses.some(course => course.name === selectedCourse) : false;
+      const matchesText = searchText ? student.imePrezime.toLowerCase().includes(searchText.toLowerCase()) : true;
+      return matchesCourse && matchesText;
+    });
+
+    switch (selectedSort) {
+      case '1':
+        filtered.sort((a, b) => a.imePrezime.localeCompare(b.imePrezime));
+        break;
+      case '2':
+        filtered.sort((a, b) => b.imePrezime.localeCompare(a.imePrezime));
+        break;
+      case '3':
+        filtered = filtered.filter(student => student.courses.some(course => course.name === selectedCourse && course.potpis === 'NE'));
+        break;
+      default:
+        break;
+    }
+
+    setFilteredStudents(filtered);
+  };
+
+  const resetFilters = () => {
+    setSelectedCourse('');
+    setSearchText('');
+    setSelectedSort('');
+    setFilteredStudents([]);
+  };
+
+  useEffect(() => {
+    filterStudents();
+  }, [searchText, selectedCourse, selectedSort]);
+
   return (
     <div>
-        <main style={{marginBottom: '100px'}}>
-          <div className="topNavigation">
-            <Link to="/pocetna-profesor">Profesor</Link>
-            <ArrowForwardIos sx={{height: '14px'}}/>
-            <Link to="/pocetna-profesor">Administracija kolegija</Link>
-            <ArrowForwardIos sx={{height: '14px'}}/>
-            <Link to="/pregled-rezultata-studenta">Pregled rezultata studenata</Link>
-          </div>
-          <Typography variant="h3" sx={{marginBottom: '20px'}}>
+      <main style={{ marginBottom: '100px' }}>
+        <div className="topNavigation">
+          <Link to="/pocetna-profesor">Profesor</Link>
+          <ArrowForwardIos sx={{ height: '14px' }} />
+          <Link to="/pocetna-profesor">Administracija kolegija</Link>
+          <ArrowForwardIos sx={{ height: '14px' }} />
+          <Link to="/pregled-rezultata-studenta">Pregled rezultata studenata</Link>
+        </div>
+        <Typography variant="h3" sx={{ marginBottom: '20px' }}>
           Dostupni kolegiji u akademskoj godini
+        </Typography>
+        <div className='searchFilter'>
+          <BasicSelect label="Kolegij" dropdownOptions={dropdownCourse} value={selectedCourse} onChange={(e) => handleCourseChange(e.target.value)} width='30rem' />
+            {console.log("Component render, selectedValue:", selectedCourse)}
+          <BasicSelect label="Sortiranje" dropdownOptions={dropdownSort} value={selectedSort} onChange={(e) => handleSortChange(e.target.value)} />
+          <TextField id="outlined-search" label="Pretraži" type="search" value={searchText} onChange={handleSearchChange} />
+          <Button variant="contained" color="error" onClick={resetFilters}>Očisti filtere</Button>
+        </div>
+        <div className='cardListContainer'>
+          <Typography variant="h6" sx={{ marginBottom: '15px' }}>
+            Rezultati studenata:
           </Typography>
-          <div className='searchFilter'>
-            <BasicSelect label="Godina" dropdownOptions={dropdownYear}/>
-            <BasicSelect label="Kolegij" dropdownOptions={dropdownCourse} width='30rem'/>
-            <BasicSelect label="Sortiranje" dropdownOptions={dropdownSort}/>
-            <TextField  id="outlined-search" label="Pretraži" type="search"/>
-            <IconButton color="primary" aria-label="search" component="span">
-                <SearchIcon />
-            </IconButton>
-            <Button variant="contained" color="error">Očisti filtere</Button>
-          </div>
-          <div className='cardListContainer'>
-            <Typography variant="h6" sx={{marginBottom: '15px'}}>
-              Rezultati studenata:
+          {filteredStudents.length === 0 && (
+            <Typography variant="body1" sx={{ marginBottom: '15px' }}>
+              Odaberite kolegij.
             </Typography>
-            <StudentResultsCard student={student1}/>
-            <StudentResultsCard student={student2}/>
-            <StudentResultsCard student={student3}/>
-            <StudentResultsCard student={student4}/>
-          </div>
-        </main>
+          )}
+          {filteredStudents.map((student, index) => (
+            <StudentResultsCard key={index} student={student} course={selectedCourse} />
+          ))}
+        </div>
+      </main>
     </div>
   );
 }

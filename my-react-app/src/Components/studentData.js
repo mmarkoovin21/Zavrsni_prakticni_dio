@@ -32,7 +32,7 @@ export const courses1 =  [
     },
     {
         id: 3,
-        name: 'Analiza i razvoj računalnih programa',
+        name: 'Analiza i razvoj programa',
         kolokvij1: 10,
         kolokvij2: 10,
         projekt1: 10,
@@ -74,7 +74,49 @@ export const courses2 =  [
     },
     {
         id: 3,
-        name: 'Analiza i razvoj računalnih programa',
+        name: 'Analiza i razvoj programa',
+        kolokvij1: 10,
+        kolokvij2: 10,
+        projekt1: 10,
+        projekt2: 10,
+        aktivnost: 10,
+        dodatniBodovi: 'nema',
+        ukupno: 60,
+        predlozenaOcijena: 3,
+        potpis: 'DA',
+    },
+];
+
+export const courses4 =  [
+    {
+        id: 1,
+        name: 'Testiranje i kvaliteta programskih proizvoda',
+        kolokvij1: 10,
+        kolokvij2: 10,
+        projekt1: 10,
+        projekt2: 10,
+        aktivnost: 10,
+        dodatniBodovi: 'nema',
+        ukupno: 60,
+        predlozenaOcijena: 3,
+        potpis: 'DA',
+    },
+    {
+        id: 2,
+        name: 'Razvoj programskih proizvoda',
+        kolokvij1: 6,
+        kolokvij2: 0,
+        projekt1: 10,
+        projekt2: 10,
+        aktivnost: 10,
+        dodatniBodovi: 'nema',
+        ukupno: 36,
+        predlozenaOcijena: 1,
+        potpis: 'NE',
+    },
+    {
+        id: 3,
+        name: 'Analiza i razvoj programa',
         kolokvij1: 10,
         kolokvij2: 10,
         projekt1: 10,
@@ -90,7 +132,7 @@ export const courses2 =  [
 export const oneCourse =  [
     {
         id: 1,
-        name: 'Razvoj web aplikacija',
+        name: 'Razvoj windows aplikacija',
         kolokvij1: 10,
         kolokvij2: 10,
         projekt1: 10,
@@ -104,6 +146,7 @@ export const oneCourse =  [
 ];
   
 export const student1 = {
+    id: 1,
     imePrezime: 'Magdalena Markovinović',
     jmbag: '0036475863',
     datumRodenja: '12.12.2002.',
@@ -117,6 +160,7 @@ export const student1 = {
 }
   
 export const student2 = {
+    id: 2,
     imePrezime: 'Ante Bakula',
     jmbag: '0016073564',
     datumRodenja: '12.20.1998.',
@@ -130,6 +174,7 @@ export const student2 = {
 }
   
 export const student3 = {
+    id: 3,
     imePrezime: 'David Matijanić',
     jmbag: '0017109928',
     datumRodenja: '02.01.2002.',
@@ -144,6 +189,7 @@ export const student3 = {
   
   
 export const student4 = {
+    id: 4,
     imePrezime: 'Frano Šimić',
     jmbag: '0016129837',
     datumRodenja: '25.02.2002.',
@@ -151,7 +197,7 @@ export const student4 = {
     email: 'fsimic21@foi.hr',
     brUpisanihPredmeta: '24',
     brOdslusanihPredmeta: '22',
-    courses: courses1,
+    courses: courses4,
     image: studentPicture4,
     prosjek: '3.5'
 }
