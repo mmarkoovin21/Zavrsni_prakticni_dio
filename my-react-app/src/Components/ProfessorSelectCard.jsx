@@ -2,11 +2,13 @@ import React from 'react';
 import Checkbox from '@mui/material/Checkbox';
 import { Paper, Typography } from '@mui/material';
 
-function ProfessorSelectCard({ professor}) {
+function ProfessorSelectCard({ professor, onSelectChange}) {
     const [isChecked, setIsChecked] = React.useState(false);
 
     const handleToggle = () => {
-        setIsChecked(!isChecked);
+        const newChecked = !isChecked;
+        setIsChecked(newChecked);
+        onSelectChange(newChecked, professor.id);
     };
     return (
         <div style={{width: '99%', marginBottom: '5px'}}>

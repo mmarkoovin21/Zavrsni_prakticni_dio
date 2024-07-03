@@ -4,13 +4,13 @@ import { ArrowForwardIos } from "@mui/icons-material";
 import { Button, Typography } from '@mui/material';
 import BasicSelect from '../BasicSelect';
 import ListBox from '../ListBox';
-import { listProfesors } from '../courseData';
+import { listProfesors, courses } from '../courseData'; // Assuming courses is exported from courseData
 import ProfessorSelectCard from '../ProfessorSelectCard';
 import TextField from '@mui/material/TextField';
 
 let dropdownCourse = {
     1: 'Analiza i razvoj računalnih programa',
-    2: 'Razvoj programskih proizvoda',
+    2: 'Projektiranje informacijskih sustava',
     3: 'Razvoj windows aplikacija',
     4: 'Testiranje i kvaliteta programskih proizvoda',
 };
@@ -18,26 +18,74 @@ let dropdownCourse = {
 function DodjeljivanjeNastavnika() {
     const [code, setCode] = useState('');
     const [course, setCourse] = useState('');
-    const [filteredProfessors, setFilteredProfessors] = useState(listProfesors);
+    const [nonCourseProfessors, setNonCourseProfessors] = useState([]);
+    const [courseProfessors, setCourseProfessors] = useState([]);
+    const [selectedProfessors, setSelectedProfessors] = useState(new Set());
+
+    const handleSelectChange = (isChecked, professorId) => {
+        setSelectedProfessors((prevSelected) => {
+            const newSelected = new Set(prevSelected);
+            if (isChecked) {
+                newSelected.add(professorId);
+                console.log(newSelected);
+            } else {
+                newSelected.delete(professorId);
+            }
+            return newSelected;
+        });
+    };
+
+    const addSelectedProfessors = () => {
+        // Filter nonCourseProfessors to find only those selected
+        const toAdd = nonCourseProfessors.filter((prof) => selectedProfessors.has(prof.id));
+        // Add only the selected professors to courseProfessors
+        setCourseProfessors((prev) => [...prev, ...toAdd]);
+        // Remove the added professors from nonCourseProfessors
+        setNonCourseProfessors((prev) => prev.filter((prof) => !selectedProfessors.has(prof.id)));
+        // Clear the selection
+        setSelectedProfessors(new Set());
+    };
+
+    const addAllProfessors = () => {
+        setCourseProfessors((prev) => [...prev, ...nonCourseProfessors]);
+        setNonCourseProfessors([]);
+    };
+
+    const removeSelectedProfessors = () => {
+        const toRemove = courseProfessors.filter((prof) => selectedProfessors.has(prof.id));
+        setNonCourseProfessors((prev) => [...prev, ...toRemove]);
+        setCourseProfessors((prev) => prev.filter((prof) => !selectedProfessors.has(prof.id)));
+        setSelectedProfessors(new Set());
+    };
+
+    const removeAllProfessors = () => {
+        setNonCourseProfessors((prev) => [...prev, ...courseProfessors]);
+        setCourseProfessors([]);
+    };
 
     useEffect(() => {
-        const filterProfessors = () => {
-            let filtered = listProfesors.filter(professor => {
-                const matchesCode = code ? professor.code === code : true;
-                const matchesCourse = course ? professor.course === course : true;
-    
-                return matchesCode && matchesCourse;
-            });
-            setFilteredProfessors(filtered);
-        };
-    
-        filterProfessors();
+        if (course || code) {
+            const selectedCourse = courses.find(c => c.id.toString() === course || c.code === code);
+            if (selectedCourse) {
+                const assignedProfessors = selectedCourse.profesors;
+                const nonAssignedProfessors = listProfesors.filter(p => !assignedProfessors.includes(p));
+                setNonCourseProfessors(nonAssignedProfessors);
+                setCourseProfessors(assignedProfessors);
+            } else {
+                setNonCourseProfessors([]);
+                setCourseProfessors([]);
+            }
+        } else {
+            setNonCourseProfessors([]);
+            setCourseProfessors([]);
+        }
     }, [code, course]);
-    
+
     const handleClearFilters = () => {
         setCode('');
         setCourse('');
-        setFilteredProfessors(listProfesors); // Reset to initial list
+        setNonCourseProfessors([]);
+        setCourseProfessors([]);
     };
 
     return (
@@ -63,9 +111,13 @@ function DodjeljivanjeNastavnika() {
                         Lista nastavnika koji NE predaju na predmetu:
                     </Typography>
                     <ListBox>
-                        {filteredProfessors.map((professor, index) => (
-                            <ProfessorSelectCard key={index} professor={professor} />
-                        ))}
+                    {nonCourseProfessors.map((professor) => (
+                        <ProfessorSelectCard
+                            key={professor.id}
+                            professor={professor}
+                            onSelectChange={handleSelectChange}
+                        />
+                    ))}
                     </ListBox>
                 </div>
                 <div>
@@ -73,17 +125,17 @@ function DodjeljivanjeNastavnika() {
                         Lista nastavnika koji predaju na predmetu:
                     </Typography>
                     <ListBox>
-                        {filteredProfessors.map((professor, index) => (
-                            <ProfessorSelectCard key={index} professor={professor} />
+                        {courseProfessors.map((professor) => (
+                            <ProfessorSelectCard key={professor.id} professor={professor} onSelectChange={handleSelectChange} />
                         ))}
                     </ListBox>
                 </div>
             </div>
             <div className='bottomButtons'>
-                <Button variant="contained" color="primary">Dodaj Nastavnika/e</Button>
-                <Button variant="contained" color="primary">Dodaj sve</Button>
-                <Button variant="contained" color="error">Ukloni Nastavnika/e</Button>
-                <Button variant="contained" color="error">Ukloni sve</Button>
+            <Button variant="contained" color="primary" onClick={addSelectedProfessors}>Dodaj Nastavnika/e</Button>
+                <Button variant="contained" color="primary" onClick={addAllProfessors}>Dodaj sve</Button>
+                <Button variant="contained" color="error" onClick={removeSelectedProfessors}>Ukloni Nastavnika/e</Button>
+                <Button variant="contained" color="error" onClick={removeAllProfessors}>Ukloni sve</Button>
             </div>
         </main>
     );

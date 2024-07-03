@@ -1,55 +1,66 @@
     export const listProfesors = [
         {
+            id: 1,
             name: 'Kitinić Valentina',
             title: 'prof. dr. sc.',
             email: 'vkirinic@foi.hr',
         },
         {
+            id: 2,
             name: 'Mijač Marko',
             title: 'doc. dr. sc.',
             email: 'mmarko@foi.hr',
         },
         {
+            id: 3,
             name: 'Berket Marijana',
             title: 'doc. dr. sc.',
             email: 'bmarijana@foi.hr',
         },
         {
+            id: 4,
             name: 'Andročec Darko',
             title: 'prof. dr. sc.',
             email: 'adarko@foi.hr',
         },
         {
+            id: 5,
             name: 'Strahonja Vjeran',
             title: 'prof. dr. sc.',
             email: 'vstrahonjaa@foi.hr',
         },
         {
+            id: 6,
             name: 'Oreški Dijana',
             title: 'prof. dr. sc.',
             email: 'doreski@foi.hr',
         },
         {
+            id: 7,
             name: 'Stapić Zlatko',
             title: 'prof. dr. sc.',
             email: 'zstapic@foi.hr',
         },
         {
+            id: 8,
             name: 'Masnec Lea',
             title: 'doc. dr. sc.',
             email: 'lmasnec@foi.hr',
         },
         {
+            id: 9,
             name: 'Takač Kristina',
             title: 'doc. dr. sc.',
             email: 'ktakač@foi.hr',
         },
         {
+            id: 10,
             name: 'Klarić Vedran',
             title: 'doc. dr. sc.',
             email: 'vklaric@foi.hr',
         },
         {
+            id: 11,
             name: 'Vrček Neven',
             title: 'prof. dr. sc.',
             email: 'nvrcek@foi.hr',
@@ -92,7 +103,7 @@
         },
         {
             id: 4,
-            title: 'Analiza i razvoj programa',
+            title: 'Analiza i razvoj računalnih programa',
             code: '345678',
             major: 'Informacijski i poslovni sustavi 1.2 (IPS)',
             semester: 4,
