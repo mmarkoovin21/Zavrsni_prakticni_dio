@@ -35,7 +35,6 @@ function AkGodina() {
       return matchesYear && matchesText;
     });
     setFilteredCourses(filtered);
-    console.log(filtered);
   };
 
   const resetFilters = () => {
@@ -48,7 +47,6 @@ function AkGodina() {
     filterCourses();
   }, [searchText, selectedYear]);
 
-  console.log('Rendering AkGodina');
   return (
     <div>
       <main>

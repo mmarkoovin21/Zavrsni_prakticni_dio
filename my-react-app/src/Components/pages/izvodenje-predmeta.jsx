@@ -26,7 +26,6 @@ function Izvodjenjepredmeta() {
             const newSelected = new Set(prevSelected);
             if (isChecked) {
                 newSelected.add(courseId);
-                console.log(newSelected);
             } else {
                 newSelected.delete(courseId);
             }

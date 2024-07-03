@@ -27,7 +27,6 @@ function DodjeljivanjeNastavnika() {
             const newSelected = new Set(prevSelected);
             if (isChecked) {
                 newSelected.add(professorId);
-                console.log(newSelected);
             } else {
                 newSelected.delete(professorId);
             }
@@ -36,13 +35,9 @@ function DodjeljivanjeNastavnika() {
     };
 
     const addSelectedProfessors = () => {
-        // Filter nonCourseProfessors to find only those selected
         const toAdd = nonCourseProfessors.filter((prof) => selectedProfessors.has(prof.id));
-        // Add only the selected professors to courseProfessors
         setCourseProfessors((prev) => [...prev, ...toAdd]);
-        // Remove the added professors from nonCourseProfessors
         setNonCourseProfessors((prev) => prev.filter((prof) => !selectedProfessors.has(prof.id)));
-        // Clear the selection
         setSelectedProfessors(new Set());
     };
 
