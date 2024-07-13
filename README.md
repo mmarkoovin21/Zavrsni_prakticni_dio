@@ -3,7 +3,7 @@
 ## Description
 
 This part of my final thesis of the undergraduate study presents an implementation of frontend for existing software called **Course Manager**.
-I used **Figma** for designing screens and **React** for implementing.
+I used **Figma** for designing screens and **React** for implementation.
 Here are screens of existing desktop software that should have been designed and implemented:
 
 ### Admin navigation
