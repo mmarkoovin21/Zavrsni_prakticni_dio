@@ -3,7 +3,7 @@
 ## Description
 
 This part of my final thesis of the undergraduate study presents an implementation of frontend for existing software called **Course Manager**.
-I used **Figma** for designing screens and **React** for implementation.
+I used [Figma](https://www.figma.com/design/tNkcwDc8uMhCTxaxlyuGfu/Zavr%C5%A1ni?node-id=0-1&t=ZsnfUX5fvmRtk8d5-1) for designing screens and [React](https://react.dev/) for implementation. Uz navedeno, radi lakše i brže implementacije, korišten je [Material UI kit](https://mui.com/material-ui/).
 Here are screens of existing desktop software that should have been designed and implemented:
 
 ### Admin navigation
