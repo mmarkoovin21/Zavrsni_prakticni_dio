@@ -8,7 +8,7 @@ Here are screens of existing desktop software that should have been designed and
 ### Admin navigation
 ![image](https://github.com/user-attachments/assets/c76c7442-de06-4782-b704-f4312b607867)
 
-###Professors - courses maping
+### Professors - courses maping
 ![image](https://github.com/user-attachments/assets/96b09263-cb2b-4a33-aca6-3ea4908ee8ae)
 
 ### Courses available in accademic year
